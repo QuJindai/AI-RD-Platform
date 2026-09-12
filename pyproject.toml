@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-rd-platform"
+version = "0.1.0"
+description = "Independent AI R&D platform with evidence-backed data, model and agent workflows"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dynamic = ["dependencies"]
+
+[project.scripts]
+ai-rd = "ard.__main__:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.lock"]}
+
+[tool.setuptools.packages.find]
+include = ["ard*"]
+
+[tool.setuptools.package-data]
+ard = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

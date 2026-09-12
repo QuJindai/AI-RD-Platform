@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.superpowers/
+runtime/
+*.sqlite*
+*.egg-info/
+build/
+dist/
+.coverage
+test-results/
+node_modules/

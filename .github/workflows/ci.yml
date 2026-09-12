@@ -1,0 +1,52 @@
+name: Verify platform
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pytest -q --junitxml=test-results/junit.xml
+      - run: node --check ard/static/app.js
+      - run: node --test --test-reporter=tap tests/test_ui.mjs > test-results/ui-tests.tap
+      - run: python -m pip wheel --no-deps --wheel-dir dist .
+      - run: python -m pip install --no-deps dist/*.whl
+      - name: Installed package real HTTP acceptance
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP"
+          python -m ard --port 8765 --data-dir "$GITHUB_WORKSPACE/test-results/runtime" > "$GITHUB_WORKSPACE/test-results/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python - <<'PY'
+          import time, urllib.request
+          for attempt in range(60):
+              try:
+                  urllib.request.urlopen('http://127.0.0.1:8765/health', timeout=1)
+                  break
+              except Exception:
+                  time.sleep(.5)
+          else:
+              raise SystemExit('Server did not start')
+          PY
+          python "$GITHUB_WORKSPACE/scripts/smoke.py" --base-url http://127.0.0.1:8765 --output "$GITHUB_WORKSPACE/test-results/http-smoke.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-results
+          path: |
+            test-results/junit.xml
+            test-results/ui-tests.tap
+            test-results/http-smoke.json
+            test-results/server.log

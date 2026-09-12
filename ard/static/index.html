@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AI-RD-Platform 人工智能研发管理控制台">
+  <title>AI-RD Platform · 研发控制台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">跳到主要内容</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">AR</span>
+        <div><strong>AI-RD</strong><span>研发管理平台</span></div>
+      </div>
+      <nav id="primary-nav" class="primary-nav">
+        <button class="nav-item active" data-tab="overview" aria-current="page"><span aria-hidden="true">⌂</span><b>总览</b></button>
+        <button class="nav-item" data-tab="datasets"><span aria-hidden="true">▦</span><b>数据工坊</b></button>
+        <button class="nav-item" data-tab="models"><span aria-hidden="true">◫</span><b>模型实验</b></button>
+        <button class="nav-item" data-tab="agents"><span aria-hidden="true">◇</span><b>智能体与工作流</b></button>
+        <button class="nav-item" data-tab="operations"><span aria-hidden="true">◉</span><b>运维与资源</b></button>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="service-state">正在连接服务</span>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <button id="mobile-menu" class="icon-button mobile-only" type="button" aria-label="打开导航">☰</button>
+        <div class="project-switcher">
+          <label for="project-select">当前项目</label>
+          <select id="project-select" aria-label="当前项目"><option value="">加载项目…</option></select>
+          <button id="create-project-open" class="button ghost compact" type="button">＋ 新建</button>
+        </div>
+        <div class="identity">
+          <div><strong id="identity-name">访客</strong><span id="identity-role">连接中</span></div>
+          <button id="auth-open" class="avatar" type="button" aria-label="访问令牌设置">访</button>
+        </div>
+      </header>
+
+      <main id="workspace" tabindex="-1">
+        <div id="global-status" class="status-banner" role="status" hidden></div>
+
+        <section id="tab-overview" class="tab-panel active" aria-labelledby="title-overview">
+          <div class="page-heading">
+            <div><p class="eyebrow">研发工作台</p><h1 id="title-overview">总览</h1><p>从数据版本到在线推理，掌握当前项目的研发进展。</p></div>
+            <div class="actions"><button id="overview-refresh" class="button ghost" type="button">刷新总览</button><button class="button primary" data-go="datasets" type="button">开始处理数据</button></div>
+          </div>
+          <div id="overview-counts" class="metric-grid" aria-label="平台统计"></div>
+          <div class="dashboard-grid">
+            <article class="card span-2"><div class="card-head"><div><p class="eyebrow">任务活动</p><h2>最近任务</h2></div><button class="text-button" data-go="models" type="button">查看全部</button></div><div id="overview-jobs" class="list-area loading">正在读取任务…</div></article>
+            <article class="card"><div class="card-head"><div><p class="eyebrow">计算资源</p><h2>运行环境</h2></div></div><div id="overview-resources" class="resource-stack loading">正在读取资源…</div></article>
+            <article class="card flow-card span-3"><div class="card-head"><div><p class="eyebrow">标准路径</p><h2>研发流程</h2></div></div><ol class="flow"><li><b>01</b><span>导入数据<small>CSV / JSON / JSONL / ZIP</small></span></li><li><b>02</b><span>清洗封存<small>生成不可变数据版本</small></span></li><li><b>03</b><span>审批训练<small>CPU 任务可追踪</small></span></li><li><b>04</b><span>部署应用<small>预测、检索与工作流</small></span></li></ol></article>
+          </div>
+        </section>
+
+        <section id="tab-datasets" class="tab-panel" aria-labelledby="title-datasets">
+          <div class="page-heading"><div><p class="eyebrow">DATA STUDIO</p><h1 id="title-datasets">数据工坊</h1><p>导入、检查、清洗并封存每一个可追溯版本。</p></div><div class="actions"><input id="import-file" type="file" accept=".csv,.json,.jsonl,.zip" hidden><button id="synthetic-create" class="button secondary" type="button">创建合成样例</button><button id="import-open" class="button primary" type="button">导入文件</button></div></div>
+          <div class="split-layout">
+            <article class="card asset-sidebar"><div class="card-head"><div><p class="eyebrow">版本列表</p><h2>数据资产</h2></div><span id="dataset-count" class="count-pill">0</span></div><div id="dataset-list" class="select-list loading">正在读取数据…</div></article>
+            <div class="detail-stack">
+              <article class="card"><div class="card-head"><div><p class="eyebrow">选中版本</p><h2 id="dataset-title">请选择数据集</h2></div><span id="dataset-seal" class="status-chip neutral">未选择</span></div><div id="dataset-meta" class="meta-grid"></div><div id="dataset-preview" class="table-wrap empty">选择数据集后预览实际数据</div></article>
+              <article class="card"><div class="card-head"><div><p class="eyebrow">版本操作</p><h2>清洗与封存</h2></div></div>
+                <div class="form-grid">
+                  <label class="field span-2">清洗操作 JSON<textarea id="transform-operations" rows="5" spellcheck="false">[
+  {"type": "strip"},
+  {"type": "drop_duplicates"}
+]</textarea><small>可编辑操作列表；新结果将封存为独立版本。</small></label>
+                  <label class="field">新版本名称（可选）<input id="transform-name" placeholder="自动沿用名称"></label>
+                  <div class="field button-field"><span>执行</span><button id="transform-run" class="button primary" type="button">清洗并生成版本</button></div>
+                  <label class="field">拆分比例<input id="split-ratio" type="number" min="0.01" max="0.99" step="0.01" value="0.8"></label>
+                  <label class="field">随机种子<input id="split-seed" type="number" value="42"></label>
+                </div>
+                <div class="action-bar"><button id="split-run" class="button secondary" type="button">拆分为 A / B</button><button id="export-run" class="button ghost" type="button">导出 JSON</button><button id="transfer-run" class="button ghost" type="button">申请转入模型库</button></div>
+              </article>
+              <article class="card"><div class="card-head"><div><p class="eyebrow">组合数据</p><h2>合并版本</h2></div></div><div id="merge-options" class="check-grid empty">至少创建两个数据版本后可合并</div><div class="inline-form"><label class="field grow">合并后名称<input id="merge-name" placeholder="例如：完整训练数据 v1"></label><button id="merge-run" class="button secondary" type="button">合并选中版本</button></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-models" class="tab-panel" aria-labelledby="title-models">
+          <div class="page-heading"><div><p class="eyebrow">MODEL LAB</p><h1 id="title-models">模型实验</h1><p>配置真实 CPU 训练任务，查看指标并发布限时预测服务。</p></div><button id="models-refresh" class="button ghost" type="button">刷新实验状态</button></div>
+          <div class="dashboard-grid">
+            <article class="card"><div class="card-head"><div><p class="eyebrow">训练配置</p><h2>新建实验</h2></div></div>
+              <div class="form-stack"><label class="field">已审批数据版本<select id="train-dataset"><option value="">请选择数据</option></select></label><label class="field">目标列<input id="train-target" placeholder="例如 label"></label><label class="field">任务类型<select id="train-task"><option value="classification">分类</option><option value="regression">回归</option></select></label><label class="field">特征列（逗号分隔，可留空）<input id="train-features" placeholder="例如 x,y"></label><label class="field">测试集比例<input id="train-fraction" type="number" min="0.1" max="0.5" step="0.05" value="0.25"></label><button id="train-run" class="button primary full" type="button">提交训练任务</button></div>
+            </article>
+            <article class="card span-2"><div class="card-head"><div><p class="eyebrow">任务队列</p><h2>运行进度与日志</h2></div><span class="live-label"><i></i>自动更新</span></div><div id="job-list" class="job-panels loading">正在读取任务…</div></article>
+            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">模型仓库</p><h2>已封存模型</h2></div><span id="model-count" class="count-pill">0</span></div><div class="model-workbench"><div id="model-list" class="select-list horizontal loading">正在读取模型…</div><div id="model-detail" class="model-detail empty">选择模型后查看真实评估指标</div></div></article>
+            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">在线推理</p><h2>部署与预测</h2></div></div><div class="form-grid deploy-grid"><label class="field">部署模型<select id="deploy-model"><option value="">请选择模型</option></select></label><label class="field">运行时限（分钟）<input id="deploy-minutes" type="number" min="1" max="10080" value="60"></label><div class="field button-field"><span>发布</span><button id="deploy-run" class="button secondary" type="button">创建部署</button></div><label class="field">活动部署<select id="prediction-deployment"><option value="">请选择部署</option></select></label><label class="field span-2">预测数据 JSON<textarea id="prediction-rows" rows="4" spellcheck="false">[
+  {"x": 1, "y": 2}
+]</textarea></label></div><div class="action-bar"><button id="predict-run" class="button primary" type="button">运行预测</button><button id="deployment-stop" class="button danger-ghost" type="button">停止部署</button></div><pre id="prediction-result" class="result-box" tabindex="0">预测结果将在这里显示</pre></article>
+          </div>
+        </section>
+
+        <section id="tab-agents" class="tab-panel" aria-labelledby="title-agents">
+          <div class="page-heading"><div><p class="eyebrow">AGENT &amp; FLOW</p><h1 id="title-agents">智能体与工作流</h1><p>沉淀知识证据，编排可审核的自动化流程。</p></div><button id="agents-refresh" class="button ghost" type="button">刷新工作区</button></div>
+          <div class="dashboard-grid">
+            <article class="card"><div class="card-head"><div><p class="eyebrow">知识库</p><h2>录入文档</h2></div></div><div class="form-stack"><label class="field">文档名称<input id="document-name" placeholder="例如：质量判定规范"></label><label class="field">切片策略<select id="document-strategy"><option value="paragraph">按段落</option><option value="heading">按标题</option><option value="sentence">按句子</option><option value="fixed">固定长度</option><option value="delimiter">自定义分隔</option></select></label><label class="field">文档内容<textarea id="document-text" rows="8" placeholder="粘贴需要检索的原始资料"></textarea></label><button id="document-add" class="button secondary full" type="button">写入知识库</button></div><div id="document-list" class="micro-list"></div></article>
+            <article class="card span-2"><div class="card-head"><div><p class="eyebrow">证据检索</p><h2>查询知识</h2></div></div><div class="search-row"><input id="search-query" aria-label="检索问题" placeholder="输入问题或关键词"><select id="search-mode" aria-label="检索模式"><option value="keyword">关键词</option><option value="semantic">语义</option><option value="hybrid">混合</option></select><button id="search-run" class="button primary" type="button">检索</button></div><div id="search-results" class="evidence-list empty">检索结果将显示原文引文与来源位置</div></article>
+            <article class="card span-2"><div class="card-head"><div><p class="eyebrow">流程定义</p><h2>工作流 JSON</h2></div><button id="workflow-example" class="text-button" type="button">载入人工审核示例</button></div><label class="field">工作流名称<input id="workflow-name" value="证据人工复核"></label><div class="code-split"><label class="field">节点<textarea id="workflow-nodes" rows="14" spellcheck="false">[
+  {"id":"input","type":"input"},
+  {"id":"review","type":"human","params":{"message":"请复核输入证据"}},
+  {"id":"output","type":"output"}
+]</textarea></label><label class="field">连线<textarea id="workflow-edges" rows="14" spellcheck="false">[
+  {"source":"input","target":"review"},
+  {"source":"review","target":"output"}
+]</textarea></label></div><div class="action-bar"><button id="workflow-preview-run" class="button ghost" type="button">预览结构</button><button id="workflow-save" class="button secondary" type="button">保存新版本</button></div></article>
+            <article class="card"><div class="card-head"><div><p class="eyebrow">结构预览</p><h2>执行图</h2></div></div><div id="workflow-graph" class="workflow-graph empty">编辑 JSON 后预览节点关系</div></article>
+            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">运行与审核</p><h2>工作流控制台</h2></div></div><div class="form-grid"><label class="field">已保存工作流<select id="workflow-select"><option value="">请选择工作流</option></select></label><label class="field span-2">运行输入 JSON<textarea id="workflow-input" rows="3" spellcheck="false">{}</textarea></label></div><div class="action-bar"><button id="workflow-run" class="button primary" type="button">运行工作流</button></div><div id="workflow-jobs" class="job-panels"></div><div class="divider"></div><h3>待处理人工审批</h3><div id="approval-list" class="approval-list empty">当前没有待审批事项</div></article>
+          </div>
+        </section>
+
+        <section id="tab-operations" class="tab-panel" aria-labelledby="title-operations">
+          <div class="page-heading"><div><p class="eyebrow">OPERATIONS</p><h1 id="title-operations">运维与资源</h1><p>查看实际资源、连接器能力与可验证的审计记录。</p></div><button id="operations-refresh" class="button ghost" type="button">刷新运行信息</button></div>
+          <div class="dashboard-grid">
+            <article class="card span-2"><div class="card-head"><div><p class="eyebrow">资源状态</p><h2>本机执行环境</h2></div></div><div id="operations-resources" class="resource-grid loading">正在读取资源…</div></article>
+            <article class="card"><div class="card-head"><div><p class="eyebrow">外部能力</p><h2>连接器</h2></div></div><div id="connector-list" class="micro-list loading">正在检查连接器…</div><button id="ollama-probe" class="button ghost full" type="button">探测 Ollama</button></article>
+            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">不可篡改记录</p><h2>审计日志</h2></div><button id="audit-verify" class="button secondary compact" type="button">验证哈希链</button></div><div id="audit-verification" class="verification-line">尚未执行完整性验证</div><div id="audit-list" class="audit-table table-wrap loading">正在读取审计记录…</div></article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="project-dialog"><form id="project-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">NEW PROJECT</p><h2>创建研发项目</h2></div><button id="project-dialog-close" class="icon-button" type="button" aria-label="关闭">×</button></div><label class="field">项目名称<input id="project-name" required maxlength="100" placeholder="例如：设备预测性维护"></label><label class="field">项目说明<textarea id="project-description" rows="3" maxlength="2000"></textarea></label><div class="form-grid"><label class="field">存储配额（MiB）<input id="project-quota" type="number" min="1" max="10240" value="100"></label><label class="field">活动任务上限<input id="project-jobs" type="number" min="1" max="20" value="4"></label></div><div class="dialog-actions"><button id="project-dialog-cancel" class="button ghost" type="button">取消</button><button id="project-create" class="button primary" type="submit" value="default">创建项目</button></div></form></dialog>
+  <dialog id="auth-dialog"><form id="auth-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">ACCESS</p><h2>访问凭据</h2></div><button id="auth-dialog-close" class="icon-button" type="button" aria-label="关闭">×</button></div><p class="dialog-copy">本机模式无需令牌。远程服务返回未授权时，请输入管理员提供的 Bearer Token；令牌仅保存在当前浏览器会话。</p><label class="field">Bearer Token<input id="auth-token" type="password" autocomplete="off" placeholder="仅在服务要求时填写"></label><div class="dialog-actions"><button id="auth-clear" class="button ghost" type="button">清除令牌</button><button class="button primary" type="submit" value="default">保存并重连</button></div></form></dialog>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

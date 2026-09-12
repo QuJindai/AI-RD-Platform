@@ -1,0 +1,11 @@
+.git
+.superpowers
+.venv
+runtime
+.env
+test-results
+__pycache__
+.pytest_cache
+build
+dist
+*.egg-info

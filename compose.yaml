@@ -1,0 +1,16 @@
+services:
+  platform:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      ARD_IDENTITIES: ${ARD_IDENTITIES:?Run python scripts/configure_access.py first}
+      ARD_ALLOWED_HOSTS: ${ARD_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      ARD_OLLAMA_URL: ${ARD_OLLAMA_URL:-}
+      ARD_CHAT_MODEL: ${ARD_CHAT_MODEL:-}
+      ARD_EMBED_MODEL: ${ARD_EMBED_MODEL:-}
+    volumes:
+      - ard-data:/app/runtime
+    restart: unless-stopped
+volumes:
+  ard-data:

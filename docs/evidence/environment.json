@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-12",
+  "clean_environment": {
+    "python": "3.12",
+    "dependency_install": "PASS",
+    "wheel_build": "PASS",
+    "installed_outside_repository": "PASS",
+    "packaged_html_css_js_match_source": "PASS"
+  },
+  "bash_launcher_recovery": {
+    "status": "PASS",
+    "scenario": "An existing incomplete virtual environment was repaired by the documented launcher; real HTTP health succeeded; subsequent bootstrap reused the completed lock hash."
+  },
+  "external_validation": {
+    "browser": "BLOCKED: managed browser cannot access loopback server",
+    "docker": "NOT_RUN: Docker executable unavailable",
+    "powershell": "NOT_RUN: Windows/PowerShell runtime unavailable",
+    "ollama": "NOT_RUN: no real instance connected",
+    "gpu": "NOT_RUN: no target GPU cluster connected"
+  },
+  "source_verification": "File hashes are recorded in source-sha256.json alongside this report.",
+  "final_wheel": {
+    "filename": "ai_rd_platform-0.1.0-py3-none-any.whl",
+    "sha256": "baf880c180e1686f648cff76dcc6fb84b357c017cbea7d9ebc8dfcbb7730fd10",
+    "install": "PASS",
+    "external_cwd_cli_health": "PASS",
+    "served_static_files_match": "3/3"
+  }
+}
