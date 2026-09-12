@@ -20,6 +20,10 @@ jobs:
       - run: python -m pytest -q --junitxml=test-results/junit.xml
       - run: node --check ard/static/app.js
       - run: node --test --test-reporter=tap tests/test_ui.mjs > test-results/ui-tests.tap
+      - name: Verify standalone GUI preview matches its source
+        run: |
+          python scripts/build_gui_preview.py
+          git diff --exit-code -- docs/gui/gui-preview.html
       - run: python -m pip wheel --no-deps --wheel-dir dist .
       - run: python -m pip install --no-deps dist/*.whl
       - name: Installed package real HTTP acceptance

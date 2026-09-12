@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-12",
+  "scope": "GUI 1.0 design and responsive CSS revisions; not full platform acceptance",
+  "baseline_commit": "2e1a32f99e59d8b78dae989ee6981e48ac7c76e7",
+  "production_ui_regressions": {
+    "passed": 11,
+    "failed": 0,
+    "evidence": "gui-ui-tests.tap",
+    "type": "Node VM/minimal DOM behavioral tests"
+  },
+  "preview_dom_checks": {
+    "passed": 13,
+    "failed": 0,
+    "node": "v24.19.0",
+    "jsdom": "30.0.1",
+    "evidence": "gui-preview-tests.json",
+    "type": "DOM unit checks; no browser rendering or responsive layout validation"
+  },
+  "independent_review": {
+    "status": "APPROVED after fixes",
+    "resolved": [
+      "Mobile long job logs could overflow the page",
+      "Tablet dataset details had insufficient form width",
+      "Preview project name error remained stale after correction"
+    ]
+  },
+  "color_checks": {
+    "method": "Numerical relative luminance contrast of the six listed solid foreground/background pairs only; not a complete accessibility audit",
+    "results": [
+      {
+        "name": "secondary action",
+        "foreground": "#ffffff",
+        "background": "#007d94",
+        "contrast_ratio": 4.82
+      },
+      {
+        "name": "muted text on model cell",
+        "foreground": "#596d7c",
+        "background": "#f3f8fa",
+        "contrast_ratio": 5.03
+      },
+      {
+        "name": "error status",
+        "foreground": "#b82e41",
+        "background": "#fae9eb",
+        "contrast_ratio": 5.11
+      },
+      {
+        "name": "waiting status",
+        "foreground": "#925600",
+        "background": "#fff1d8",
+        "contrast_ratio": 5.3
+      },
+      {
+        "name": "success status",
+        "foreground": "#126747",
+        "background": "#e1f5ec",
+        "contrast_ratio": 6.04
+      },
+      {
+        "name": "empty state",
+        "foreground": "#526675",
+        "background": "#ffffff",
+        "contrast_ratio": 5.97
+      }
+    ]
+  },
+  "browser_acceptance": {
+    "status": "BLOCKED / NOT COMPLETED",
+    "reason": "Managed browser URL policy rejected both loopback service access and local preview file access. No workaround attempted.",
+    "not_verified": [
+      "Rendered desktop layout",
+      "Rendered responsive layout",
+      "Actual S24 Ultra interaction",
+      "Real browser keyboard/focus and assistive technology",
+      "Screenshots"
+    ]
+  },
+  "runtime_boundary": "Preview values and feedback are synthetic. No backend calls, persistence, uploads, actual training, retrieval, approval or audit verification occur in the preview.",
+  "source_sha256": {
+    "ard/static/index.html": "a3c12fe473d9d399b8387972d0c7cc359d6dce706edf4cb232ae06e71177c73d",
+    "ard/static/style.css": "8cbb5c27248e54aa29876cc2f48d75cca009a9e9f9cb2071e6050659aac1528d",
+    "ard/static/app.js": "8e7458e1a9e8e99af09aa58dbf78e136a0923d508b10f6f1caf58ab8675198c0",
+    ".github/workflows/ci.yml": "5348f8a86ddc886d27bd8e623b5508dd8e881dba3ae7a3dbd98429a407fc58f9",
+    "docs/gui/preview-fragment.html": "66ef7e625ceee0f8f1ee8baebe369966ece54c49791952b3ec92e4a474053d4e",
+    "docs/gui/gui-preview.html": "3dc742cd184f25450fedf2528914b186802d180b167da7276f3abbd5c982b392",
+    "docs/gui/design-spec.md": "bd9dd067a299477b3bc4e8b74b522d58a147697431badb57eb50126f2cd3171a",
+    "docs/gui/test_preview.cjs": "1d9f4270ba878e62e317b4fb7898f86d8cd3cd74701adc13bd92dafa7aa87d41",
+    "scripts/build_gui_preview.py": "c867d65fb0873c73823935e4e3ba93870bae114f969c580c9d877cba1664cc0f"
+  }
+}

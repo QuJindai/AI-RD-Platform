@@ -1,5 +1,7 @@
 {
   "date": "2026-09-12",
+  "baseline_commit": "2e1a32f99e59d8b78dae989ee6981e48ac7c76e7",
+  "scope": "Historical v0.1 engineering baseline before GUI 1.0 changes. The wheel and source hashes below are not hashes of later GUI revisions; see gui-design.json for those.",
   "clean_environment": {
     "python": "3.12",
     "dependency_install": "PASS",

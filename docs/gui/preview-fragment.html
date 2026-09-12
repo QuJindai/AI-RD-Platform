@@ -1,0 +1,165 @@
+<div id="ard-gui">
+  <style>
+    #ard-gui{--ag-ink:#142433;--ag-muted:#526675;--ag-line:#dce6ec;--ag-paper:#fff;--ag-canvas:#eef4f7;--ag-navy:#0b2035;--ag-teal:#007d94;--ag-soft:#e1f4f7;--ag-green:#126747;--ag-amber:#925600;--ag-red:#b82e41;font:14px/1.6 Inter,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--ag-ink);background:var(--ag-canvas);position:relative;text-align:left;color-scheme:light}
+    #ard-gui *{box-sizing:border-box}#ard-gui [hidden]{display:none!important}#ard-gui button,#ard-gui input,#ard-gui select,#ard-gui textarea{font:inherit}
+    #ard-gui button{cursor:pointer;min-height:44px;border:1px solid var(--ag-line);border-radius:10px;padding:9px 14px;background:var(--ag-paper);color:var(--ag-ink)}#ard-gui button:hover{border-color:var(--ag-teal)}#ard-gui button:disabled{opacity:.55;cursor:not-allowed}
+    #ard-gui input,#ard-gui select,#ard-gui textarea{min-height:44px;width:100%;min-width:0;border:1px solid #bccdd7;border-radius:9px;background:var(--ag-paper);color:var(--ag-ink);padding:9px 11px;font-size:16px}#ard-gui textarea{resize:vertical}#ard-gui label{display:grid;gap:6px;color:var(--ag-muted)}
+    #ard-gui .ag-primary{background:var(--ag-teal);border-color:var(--ag-teal);color:#fff}#ard-gui .ag-secondary{color:var(--ag-teal);background:var(--ag-soft);border-color:transparent}#ard-gui .ag-danger{color:var(--ag-red)}
+    #ard-gui .ag-shell{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:760px}#ard-gui .ag-sidebar{background:var(--ag-navy);color:#fff;padding:28px 16px;display:flex;flex-direction:column;gap:32px}
+    #ard-gui .ag-brand{display:flex;gap:11px;align-items:center;padding:0 6px}#ard-gui .ag-mark{display:grid;place-items:center;width:40px;height:40px;background:#007d94;border-radius:12px;font-weight:700}#ard-gui .ag-brand strong{font-size:21px;letter-spacing:.04em}#ard-gui .ag-brand small{display:block;color:#c1d2df;font-size:12px}
+    #ard-gui .ag-nav{display:grid;gap:8px}#ard-gui .ag-nav button{border:0;background:transparent;color:#c1d2df;text-align:left;display:flex;align-items:center;gap:12px;padding:12px 10px}#ard-gui .ag-nav button[aria-current=page]{background:#163c56;color:#fff}#ard-gui .ag-nav span{color:#8bb7cc;font-size:12px;font-variant-numeric:tabular-nums}#ard-gui .ag-sidebar-note{margin-top:auto;padding:0 6px;color:#c1d2df;font-size:12px}
+    #ard-gui .ag-main{min-width:0}#ard-gui .ag-topbar{background:var(--ag-paper);border-bottom:1px solid var(--ag-line);padding:15px 26px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}#ard-gui .ag-topbar label{font-size:12px;flex:1;display:flex;align-items:center;gap:12px}#ard-gui .ag-topbar select{width:auto;max-width:245px;flex:1}#ard-gui .ag-avatar{border-radius:50%;width:44px;padding:8px;background:var(--ag-soft);color:var(--ag-teal)}
+    #ard-gui .ag-preview-label{font-size:12px;color:var(--ag-muted);padding:10px 26px;border-bottom:1px solid var(--ag-line);background:#f7fbfc}#ard-gui .ag-workspace{padding:24px 26px 32px}#ard-gui .ag-heading{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:22px}#ard-gui h1{font-size:28px;line-height:1.3;margin:4px 0 8px;letter-spacing:-.025em}#ard-gui h2{font-size:17px;line-height:1.4;margin:0}#ard-gui h3{font-size:14px;margin:0 0 8px}#ard-gui p{margin:0}#ard-gui .ag-subtitle{color:var(--ag-muted)}#ard-gui .ag-eyebrow{font-size:12px;letter-spacing:.08em;color:var(--ag-teal)}
+    #ard-gui .ag-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}#ard-gui .ag-wide{grid-column:span 2}#ard-gui .ag-full{grid-column:1/-1}#ard-gui .ag-panel{border:1px solid var(--ag-line);border-radius:15px;background:var(--ag-paper);padding:20px;min-width:0;box-shadow:0 6px 20px rgba(13,42,65,.035)}#ard-gui .ag-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    #ard-gui .ag-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:18px}#ard-gui .ag-metric{background:var(--ag-paper);border:1px solid var(--ag-line);border-radius:13px;padding:15px 16px;color:var(--ag-muted)}#ard-gui .ag-metric strong{display:block;color:var(--ag-ink);font-size:28px;line-height:1.5;font-variant-numeric:tabular-nums}
+    #ard-gui .ag-row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--ag-line);overflow-wrap:anywhere}#ard-gui .ag-row:last-child{border-bottom:0}#ard-gui small,#ard-gui .ag-small{font-size:12px;color:var(--ag-muted)}#ard-gui .ag-row small{display:block;margin-top:3px}#ard-gui .ag-chip{display:inline-flex;align-items:center;flex-shrink:0;border-radius:6px;padding:3px 8px;background:#e4f4ec;color:var(--ag-green);font-size:12px}#ard-gui .ag-chip.ag-wait{background:#fff2d8;color:var(--ag-amber)}#ard-gui .ag-chip.ag-neutral{background:#edf2f5;color:var(--ag-muted)}#ard-gui .ag-chip.ag-failed{background:#fde9ed;color:var(--ag-red)}
+    #ard-gui .ag-flow{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0;padding:0}#ard-gui .ag-flow li{display:flex;gap:10px;align-items:flex-start}#ard-gui .ag-flow b{font-size:13px;background:var(--ag-soft);color:var(--ag-teal);border-radius:9px;padding:8px}#ard-gui .ag-flow small{display:block}
+    #ard-gui .ag-split{display:grid;grid-template-columns:minmax(190px,.85fr) minmax(0,2fr);gap:18px}#ard-gui .ag-stack{display:grid;gap:18px;align-content:start}#ard-gui .ag-assets{display:grid;gap:8px}#ard-gui .ag-assets button{text-align:left;overflow-wrap:anywhere}#ard-gui .ag-assets button[aria-pressed=true]{border-color:var(--ag-teal);background:#f0fafb}#ard-gui .ag-assets small{display:block}
+    #ard-gui .ag-table-wrap{overflow-x:auto}#ard-gui table{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}#ard-gui th{font-size:12px;font-weight:500;color:var(--ag-muted);background:#f6fafc}#ard-gui th,#ard-gui td{padding:10px 12px;border-bottom:1px solid var(--ag-line)}#ard-gui td{overflow-wrap:anywhere}#ard-gui .ag-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}#ard-gui .ag-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+    #ard-gui details{border-top:1px solid var(--ag-line);margin-top:16px;padding-top:12px}#ard-gui summary{cursor:pointer;color:var(--ag-muted);min-height:44px;padding:9px 0}#ard-gui pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0 0;background:#f3f7fa;padding:12px;border-radius:8px;font-size:13px}#ard-gui .ag-result{margin-top:14px;padding:13px;background:#f3f8fa;border-radius:9px;overflow-wrap:anywhere}#ard-gui progress{width:100%;height:10px;accent-color:var(--ag-teal);margin:15px 0}
+    #ard-gui .ag-node{padding:13px;border:1px solid var(--ag-line);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:10px}#ard-gui .ag-node+.ag-node{margin-top:10px}#ard-gui .ag-node.ag-active{border-color:#d2a158;background:#fffaf0}#ard-gui blockquote{margin:12px 0;padding:12px 14px;border-left:3px solid var(--ag-teal);background:#f3f9fa}
+    #ard-gui .ag-empty{text-align:center;padding:80px 20px;background:var(--ag-paper);border:1px dashed #bccdd7;border-radius:15px}#ard-gui .ag-empty p{margin:12px 0 22px}#ard-gui .ag-feedback{padding:12px 16px;background:var(--ag-soft);border-radius:9px;margin-bottom:18px;color:#085869;overflow-wrap:anywhere}
+    #ard-gui .ag-modal-layer{position:absolute;inset:0;z-index:5;background:rgba(7,23,39,.5);padding:90px 20px 30px;display:flex;justify-content:center;align-items:flex-start}#ard-gui .ag-modal{background:var(--ag-paper);width:min(440px,100%);border-radius:16px;box-shadow:0 20px 70px rgba(7,23,39,.25);padding:24px}#ard-gui .ag-modal .ag-stack{gap:15px}#ard-gui .ag-error{color:var(--ag-red);font-size:14px}
+    @media(max-width:900px){#ard-gui .ag-shell{grid-template-columns:174px minmax(0,1fr)}#ard-gui .ag-workspace{padding:22px 18px}#ard-gui .ag-topbar{padding:14px 18px}#ard-gui .ag-topbar label>span{display:none}#ard-gui .ag-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#ard-gui .ag-wide{grid-column:span 1}#ard-gui .ag-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}#ard-gui .ag-flow{grid-template-columns:repeat(2,minmax(0,1fr))}#ard-gui .ag-heading{align-items:flex-start;flex-wrap:wrap}#ard-gui .ag-split{grid-template-columns:1fr}#ard-gui .ag-assets{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:660px){#ard-gui .ag-shell{grid-template-columns:1fr;min-height:0}#ard-gui .ag-sidebar{padding:18px 14px;gap:18px}#ard-gui .ag-brand{padding:0}#ard-gui .ag-nav{display:flex;flex-wrap:wrap;gap:5px}#ard-gui .ag-nav button{padding:9px 11px;gap:7px}#ard-gui .ag-sidebar-note{display:none}#ard-gui .ag-topbar{padding:12px;gap:8px}#ard-gui .ag-topbar label{flex-basis:130px;min-width:0}#ard-gui .ag-topbar select{max-width:none;width:0;min-width:0}#ard-gui .ag-topbar>button{padding:8px 10px}#ard-gui .ag-preview-label{padding:10px 14px}#ard-gui .ag-workspace{padding:20px 14px}#ard-gui .ag-grid,#ard-gui .ag-fields{grid-template-columns:1fr}#ard-gui .ag-wide{grid-column:auto}#ard-gui .ag-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#ard-gui .ag-panel{padding:18px}#ard-gui .ag-assets{grid-template-columns:1fr}#ard-gui .ag-flow{grid-template-columns:1fr}#ard-gui .ag-actions button{flex:1 1 auto}#ard-gui .ag-modal-layer{padding:24px 12px}#ard-gui .ag-empty{padding:45px 16px}#ard-gui .ag-row{flex-wrap:wrap}}
+  </style>
+  <div class="ag-shell">
+    <aside class="ag-sidebar">
+      <div class="ag-brand"><span class="ag-mark" aria-hidden="true">AR</span><div><strong>AI-RD</strong><small>研发管理平台</small></div></div>
+      <nav class="ag-nav" aria-label="设计预览主导航">
+        <button type="button" data-page="overview" aria-current="page"><span aria-hidden="true">01</span>总览</button>
+        <button type="button" data-page="data"><span aria-hidden="true">02</span>数据工坊</button>
+        <button type="button" data-page="models"><span aria-hidden="true">03</span>模型实验</button>
+        <button type="button" data-page="agents"><span aria-hidden="true">04</span>智能体与工作流</button>
+        <button type="button" data-page="ops"><span aria-hidden="true">05</span>运维与资源</button>
+      </nav>
+      <p class="ag-sidebar-note">GUI 1.0 · 设计预览<br>CPU 工程验证版</p>
+    </aside>
+    <div class="ag-main">
+      <header class="ag-topbar">
+        <label><span>当前项目</span><select id="ag-project" aria-label="当前项目"><option value="demo">设备质量预测 · 演示</option><option value="empty">新项目 · 空状态</option></select></label>
+        <button id="ag-new-project" type="button">＋ 新建</button><button id="ag-credentials" class="ag-avatar" type="button" aria-label="访问凭据设计">研</button>
+      </header>
+      <div class="ag-preview-label">设计预览 · 全部内容均为合成演示；交互仅在当前页面生效</div>
+      <main class="ag-workspace">
+        <div id="ag-feedback" class="ag-feedback" role="status" aria-live="polite" hidden></div>
+        <div id="ag-empty" class="ag-empty" hidden><p class="ag-eyebrow">开始一个研发项目</p><h1>当前项目还没有资产</h1><p class="ag-subtitle">从导入数据开始，逐步完成清洗、训练与部署。</p><button id="ag-load-demo" class="ag-primary" type="button">载入演示项目</button></div>
+        <section data-view="overview" aria-labelledby="ag-title-overview">
+          <div class="ag-heading"><div><p class="ag-eyebrow">研发工作台</p><h1 id="ag-title-overview">总览</h1><p class="ag-subtitle">从数据版本到在线推理，掌握项目研发进展。</p></div><button class="ag-primary" data-go="data" type="button">开始处理数据</button></div>
+          <div class="ag-metrics"><div class="ag-metric">项目<strong>2</strong></div><div class="ag-metric">数据版本<strong>3</strong></div><div class="ag-metric">模型<strong>1</strong></div><div class="ag-metric">知识文档<strong>2</strong></div><div class="ag-metric">工作流<strong>1</strong></div></div>
+          <div class="ag-grid">
+            <article class="ag-panel ag-wide"><div class="ag-panel-head"><h2>最近任务</h2><button data-go="models" type="button">查看实验</button></div><div class="ag-row"><div>质量分类 · 基线实验<small>LogisticRegression · 60 行合成数据</small></div><span class="ag-chip">已完成</span></div><div class="ag-row"><div>证据人工复核<small>等待独立审核身份处理</small></div><span id="ag-overview-approval" class="ag-chip ag-wait">等待审核</span></div><div class="ag-row"><div>数据清洗与封存<small>去除 3 条重复记录 · 来源版本保留</small></div><span class="ag-chip">已完成</span></div></article>
+            <article class="ag-panel"><div class="ag-panel-head"><h2>运行环境</h2></div><div class="ag-row"><span>CPU 执行槽</span><strong>2</strong></div><div class="ag-row"><span>项目任务上限</span><strong>4</strong></div><div class="ag-row"><span>GPU 执行器</span><span class="ag-chip ag-neutral">未实现</span></div><div class="ag-row"><span>Ollama</span><span class="ag-chip ag-wait">待配置</span></div></article>
+            <article class="ag-panel ag-full"><div class="ag-panel-head"><h2>研发流程</h2></div><ol class="ag-flow"><li><b>01</b><div>导入数据<small>CSV / JSON / JSONL / ZIP</small></div></li><li><b>02</b><div>清洗封存<small>形成独立数据版本</small></div></li><li><b>03</b><div>审批训练<small>CPU 任务可追踪</small></div></li><li><b>04</b><div>部署应用<small>预测、检索与工作流</small></div></li></ol></article>
+          </div>
+        </section>
+        <section data-view="data" aria-labelledby="ag-title-data" hidden>
+          <div class="ag-heading"><div><p class="ag-eyebrow">DATA STUDIO</p><h1 id="ag-title-data">数据工坊</h1><p class="ag-subtitle">检查、清洗并封存每一个可追溯版本。</p></div><button class="ag-primary" data-notice="正式控制台支持导入 CSV、JSON、JSONL 和 ZIP；此设计预览不读取本地文件。" type="button">导入文件</button></div>
+          <div class="ag-split"><article class="ag-panel"><div class="ag-panel-head"><h2>数据资产</h2><span class="ag-chip ag-neutral">3 个版本</span></div><div class="ag-assets"><button data-asset="clean" aria-pressed="true" type="button">设备质量 · 清洗 v2<small>60 行 · 3 列 · 已审批</small></button><button data-asset="raw" aria-pressed="false" type="button">设备质量 · 原始 v1<small>63 行 · 3 列 · 已封存</small></button><button data-asset="split" aria-pressed="false" type="button">设备质量 · 拆分 A<small>15 行 · 3 列 · 已封存</small></button></div></article>
+            <div class="ag-stack">
+              <article class="ag-panel"><div class="ag-panel-head"><h2 id="ag-asset-title">设备质量 · 清洗 v2</h2><span class="ag-chip">已封存</span></div><p id="ag-asset-meta" class="ag-small">60 行 · 3 列 · 来源：原始 v1 · 下列为合成样例</p><div class="ag-table-wrap"><table aria-label="合成数据预览"><thead><tr><th>行</th><th>x</th><th>y</th><th>label</th></tr></thead><tbody><tr><td>1</td><td>0.12</td><td>0.35</td><td>0</td></tr><tr><td>2</td><td>0.84</td><td>0.91</td><td>1</td></tr><tr><td>3</td><td>0.24</td><td>0.18</td><td>0</td></tr><tr><td>4</td><td>0.72</td><td>0.86</td><td>1</td></tr></tbody></table></div></article>
+              <article class="ag-panel"><div class="ag-panel-head"><h2>清洗与封存</h2></div><label>新版本名称<input id="ag-version-name" value="设备质量 · 清洗 v3" maxlength="100"></label><details open><summary>清洗规则 · JSON</summary><label>操作序列<textarea rows="3" spellcheck="false">[{"type":"strip"},{"type":"drop_duplicates"}]</textarea></label></details><div class="ag-actions"><button id="ag-clean" class="ag-primary" type="button">清洗并生成版本</button><button class="ag-secondary" data-notice="拆分配置：比例 0.80，随机种子 42。正式操作生成 A / B 两个新版本。" type="button">拆分 A / B</button><button data-notice="正式操作提交转库审批，由授权审核者处理。" type="button">申请转入模型库</button></div></article>
+            </div>
+          </div>
+        </section>
+        <section data-view="models" aria-labelledby="ag-title-models" hidden>
+          <div class="ag-heading"><div><p class="ag-eyebrow">MODEL LAB</p><h1 id="ag-title-models">模型实验</h1><p class="ag-subtitle">训练配置、任务状态与预测结果集中查看。</p></div><span class="ag-chip ag-neutral">CPU · 数值表格</span></div>
+          <div class="ag-grid">
+            <article class="ag-panel"><div class="ag-panel-head"><h2>新建实验</h2></div><div class="ag-stack"><label>已审批数据版本<select><option>设备质量 · 清洗 v2</option></select></label><label>目标列<input value="label"></label><label>特征列<input value="x,y"></label><label>测试集比例<input type="number" min="0.1" max="0.5" step="0.05" value="0.25"></label><button id="ag-train" class="ag-primary" type="button">提交训练任务</button></div></article>
+            <article class="ag-panel ag-wide"><div class="ag-panel-head"><h2>运行进度与日志</h2><span id="ag-job-status" class="ag-chip ag-wait">运行中 · 示例</span></div><h3>质量分类 · 实验 02</h3><p class="ag-small">任务状态演示，不执行实际训练</p><progress id="ag-progress" value="64" max="100" aria-label="示例训练进度">64%</progress><pre id="ag-job-log">[演示] 数据版本校验完成
+[演示] 划分训练集与测试集
+[演示] 正在拟合分类模型</pre><div class="ag-actions"><button id="ag-cancel" class="ag-danger" type="button">取消任务</button></div><div class="ag-result"><h3>已封存基线模型 · 示例指标</h3><p>准确率 0.9333 · 宏平均 F1 0.9330</p><small>训练 / 测试：45 / 15 行 · 所有数值为设计用合成示例</small></div></article>
+            <article class="ag-panel ag-full"><div class="ag-panel-head"><h2>部署与预测</h2><span id="ag-deployment-state" class="ag-chip">服务活动 · 示例</span></div><div class="ag-fields"><label>部署模型<select><option>质量分类 · 基线实验</option></select></label><label>运行时限（分钟）<input type="number" value="60" min="1" max="10080"></label><label class="ag-full">预测数据 JSON<textarea rows="2" spellcheck="false">[{"x":0.12,"y":0.35},{"x":0.84,"y":0.91}]</textarea></label></div><div class="ag-actions"><button id="ag-predict" class="ag-primary" type="button">运行预测</button><button id="ag-expire" type="button">查看过期状态</button></div><div id="ag-prediction" class="ag-result" role="status" aria-live="polite">预测结果将在这里显示</div></article>
+          </div>
+        </section>
+        <section data-view="agents" aria-labelledby="ag-title-agents" hidden>
+          <div class="ag-heading"><div><p class="ag-eyebrow">AGENT &amp; FLOW</p><h1 id="ag-title-agents">智能体与工作流</h1><p class="ag-subtitle">查看知识证据，处理可恢复的人工审核。</p></div></div>
+          <div class="ag-grid">
+            <article class="ag-panel"><div class="ag-panel-head"><h2>知识库</h2><span class="ag-chip ag-neutral">2 篇</span></div><div class="ag-row"><div>设备质量判定说明<small>按段落切片 · 合成文本</small></div></div><div class="ag-row"><div>异常复核指南<small>按标题切片 · 合成文本</small></div></div><details><summary>文档切片策略</summary><p class="ag-small">段落、标题、句子、固定长度、自定义分隔符。</p></details></article>
+            <article class="ag-panel ag-wide"><div class="ag-panel-head"><h2>查询知识</h2><span class="ag-chip ag-neutral">关键词</span></div><label>检索问题<input id="ag-query" value="质量异常如何复核"></label><div class="ag-actions"><button id="ag-search" class="ag-primary" type="button">检索</button></div><div id="ag-evidence" class="ag-result" hidden><h3>设备质量判定说明</h3><blockquote>发现异常后，应核对来源记录，并由审核者确认后续处理意见。</blockquote><small>合成引文 · 段落 02 · 位置仅作样式示例</small></div></article>
+            <article class="ag-panel ag-wide"><div class="ag-panel-head"><h2>证据人工复核</h2><span id="ag-approval-status" class="ag-chip ag-wait">等待审核</span></div><p class="ag-subtitle">审核通过后继续原任务；拒绝后终止本次流程。</p><div class="ag-result"><p>待复核：合成设备记录与来源说明一致，是否继续输出？</p></div><label style="margin-top:14px">审核意见<input id="ag-review-comment" placeholder="填写审核理由" maxlength="300"></label><div class="ag-actions"><button id="ag-approve" class="ag-primary" type="button">通过并继续</button><button id="ag-reject" class="ag-danger" type="button">拒绝</button><button id="ag-review-reset" type="button">重置示例</button></div><details><summary>高级：工作流定义</summary><pre>input → retrieval → human → output</pre><p class="ag-small">正式控制台使用节点 / 连线 JSON 编辑与结构预览；当前未实现拖拽画布。</p></details></article>
+            <article class="ag-panel"><div class="ag-panel-head"><h2>执行图</h2></div><div class="ag-node"><span>01 输入</span><span class="ag-chip">完成</span></div><div class="ag-node"><span>02 证据检索</span><span class="ag-chip">完成</span></div><div id="ag-human-node" class="ag-node ag-active"><span>03 人工审核</span><span id="ag-human-state" class="ag-chip ag-wait">等待</span></div><div class="ag-node"><span>04 输出</span><span id="ag-output-state" class="ag-chip ag-neutral">未执行</span></div></article>
+          </div>
+        </section>
+        <section data-view="ops" aria-labelledby="ag-title-ops" hidden>
+          <div class="ag-heading"><div><p class="ag-eyebrow">OPERATIONS</p><h1 id="ag-title-ops">运维与资源</h1><p class="ag-subtitle">资源、外部连接状态与操作留痕。</p></div></div>
+          <div class="ag-grid">
+            <article class="ag-panel ag-wide"><div class="ag-panel-head"><h2>本机执行环境</h2></div><div class="ag-row"><span>CPU 并行执行槽</span><strong>2</strong></div><div class="ag-row"><span>项目活动任务配额</span><strong>4</strong></div><div class="ag-row"><span>GPU / 集群调度</span><span class="ag-chip ag-neutral">未实现</span></div><div class="ag-row"><span>MCP 生命周期管理</span><span class="ag-chip ag-neutral">未实现</span></div></article>
+            <article class="ag-panel"><div class="ag-panel-head"><h2>连接器</h2></div><div class="ag-row"><span>Ollama</span><span id="ag-connector-state" class="ag-chip ag-wait">未配置</span></div><p class="ag-small">关键词检索与 CPU 训练可独立运行。语义检索与聊天需要外部服务。</p><div class="ag-actions"><button id="ag-probe" type="button">探测连接</button></div></article>
+            <article class="ag-panel ag-full"><div class="ag-panel-head"><h2>审计日志</h2><button id="ag-audit" class="ag-secondary" type="button">验证哈希链</button></div><p class="ag-small">当前为本地哈希链，尚未接入外部审计锚定。</p><div id="ag-audit-result" class="ag-result" role="status" aria-live="polite" hidden></div><div class="ag-table-wrap"><table aria-label="合成审计记录"><thead><tr><th>时间 · 示例</th><th>操作人</th><th>操作</th><th>对象</th></tr></thead><tbody><tr><td>10:42:18</td><td>研发者 A</td><td>数据清洗</td><td>清洗 v2</td></tr><tr><td>10:45:03</td><td>审核者 B</td><td>转库审批</td><td>清洗 v2</td></tr><tr><td>10:48:26</td><td>研发者 A</td><td>模型封存</td><td>质量分类</td></tr></tbody></table></div></article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div id="ag-modal-layer" class="ag-modal-layer" hidden>
+    <section id="ag-project-modal" class="ag-modal" role="dialog" aria-modal="true" aria-labelledby="ag-project-dialog-title" hidden>
+      <div class="ag-panel-head"><h2 id="ag-project-dialog-title">创建研发项目</h2><button type="button" data-close aria-label="关闭创建项目">×</button></div>
+      <form id="ag-project-form" novalidate><div class="ag-stack"><label>项目名称<input id="ag-project-name" required maxlength="100" placeholder="例如：设备预测性维护"></label><label>项目说明<textarea rows="3" maxlength="2000"></textarea></label><div class="ag-fields"><label>存储配额（MiB）<input type="number" min="1" max="10240" value="100"></label><label>活动任务上限<input type="number" min="1" max="20" value="4"></label></div><p id="ag-project-error" class="ag-error" role="alert" hidden>请填写项目名称。</p></div><div class="ag-actions"><button type="button" data-close>取消</button><button type="submit" class="ag-primary">创建项目</button></div></form>
+    </section>
+    <section id="ag-auth-modal" class="ag-modal" role="dialog" aria-modal="true" aria-labelledby="ag-auth-title" hidden>
+      <div class="ag-panel-head"><h2 id="ag-auth-title">访问凭据</h2><button type="button" data-close aria-label="关闭访问凭据">×</button></div><p class="ag-subtitle">正式控制台可使用管理员提供的令牌连接服务。</p><label style="margin-top:16px">Bearer Token<input type="password" disabled placeholder="设计预览不接收真实令牌"></label><div class="ag-actions"><button class="ag-primary" type="button" data-close>关闭预览</button></div>
+    </section>
+  </div>
+  <script>
+  (() => {
+    const root = document.getElementById("ard-gui");
+    const one = (selector) => root.querySelector(selector);
+    const all = (selector) => [...root.querySelectorAll(selector)];
+    const on = (selector, handler) => one(selector).addEventListener("click", handler);
+    let currentPage = "overview", expired = false, returnFocus = null;
+    const notice = (message) => { const el = one("#ag-feedback"); el.textContent = message; el.hidden = false; };
+    function showPage(page) {
+      currentPage = page;
+      const empty = one("#ag-project").value === "empty";
+      one("#ag-empty").hidden = !empty;
+      all("[data-view]").forEach(el => { el.hidden = empty || el.dataset.view !== page; });
+      all("[data-page]").forEach(el => { if (el.dataset.page === page) el.setAttribute("aria-current", "page"); else el.removeAttribute("aria-current"); });
+      one("#ag-feedback").hidden = true;
+    }
+    all("[data-page]").forEach(el => el.addEventListener("click", () => showPage(el.dataset.page)));
+    all("[data-go]").forEach(el => el.addEventListener("click", () => showPage(el.dataset.go)));
+    all("[data-notice]").forEach(el => el.addEventListener("click", () => notice(el.dataset.notice)));
+    one("#ag-project").addEventListener("change", () => showPage(currentPage));
+    on("#ag-load-demo", () => { one("#ag-project").value = "demo"; showPage(currentPage); });
+    const assets = {clean:["设备质量 · 清洗 v2","60 行 · 3 列 · 来源：原始 v1"],raw:["设备质量 · 原始 v1","63 行 · 3 列 · 来源：CSV 导入"],split:["设备质量 · 拆分 A","15 行 · 3 列 · 来源：清洗 v2"]};
+    all("[data-asset]").forEach(el => el.addEventListener("click", () => {
+      const asset = assets[el.dataset.asset];
+      one("#ag-asset-title").textContent = asset[0]; one("#ag-asset-meta").textContent = asset[1] + " · 下列为合成样例";
+      all("[data-asset]").forEach(item => item.setAttribute("aria-pressed", String(item === el)));
+    }));
+    on("#ag-clean", () => notice("版本创建反馈示例：" + (one("#ag-version-name").value.trim() || "新清洗版本") + "。此预览未生成或保存数据。"));
+    on("#ag-train", () => { one("#ag-job-status").textContent = "排队中 · 示例"; one("#ag-job-status").className = "ag-chip ag-wait"; one("#ag-progress").value = 0; one("#ag-job-log").textContent = "[演示] 任务已提交，等待 CPU 执行槽。"; one("#ag-cancel").disabled = false; notice("已切换至提交后的排队状态；未执行真实训练。"); });
+    on("#ag-cancel", () => { one("#ag-job-status").textContent = "已取消 · 示例"; one("#ag-job-status").className = "ag-chip ag-neutral"; one("#ag-job-log").textContent = "[演示] 用户已取消；不会登记成功模型。"; one("#ag-cancel").disabled = true; });
+    on("#ag-predict", () => { one("#ag-prediction").textContent = expired ? "部署已过期，请在正式控制台重新部署后调用。" : "预测结果样式示例：[0, 1]。此预览未调用模型，也未计算输入数据。"; });
+    on("#ag-expire", () => { expired = !expired; one("#ag-deployment-state").textContent = expired ? "已过期 · 示例" : "服务活动 · 示例"; one("#ag-deployment-state").className = expired ? "ag-chip ag-failed" : "ag-chip"; one("#ag-predict").disabled = expired; one("#ag-expire").textContent = expired ? "恢复活动示例" : "查看过期状态"; one("#ag-prediction").textContent = expired ? "部署已过期，预测入口已停用。" : "预测结果将在这里显示"; });
+    on("#ag-search", () => { if (!one("#ag-query").value.trim()) { one("#ag-evidence").hidden = true; notice("请先输入问题或关键词。"); return; } one("#ag-evidence").hidden = false; notice("已展示引用结果样式；未对输入问题执行真实检索。"); });
+    function approval(state) {
+      const waiting = state === "waiting", accepted = state === "approved";
+      const text = waiting ? "等待审核" : accepted ? "已通过 · 示例" : "已拒绝 · 示例";
+      const klass = waiting ? "ag-chip ag-wait" : accepted ? "ag-chip" : "ag-chip ag-failed";
+      ["#ag-approval-status","#ag-overview-approval"].forEach(id => { one(id).textContent = text; one(id).className = klass; });
+      one("#ag-human-state").textContent = waiting ? "等待" : accepted ? "通过" : "拒绝"; one("#ag-human-state").className = klass;
+      one("#ag-output-state").textContent = waiting ? "未执行" : accepted ? "完成 · 示例" : "已终止";
+      one("#ag-output-state").className = accepted ? "ag-chip" : "ag-chip ag-neutral";
+      one("#ag-human-node").className = waiting ? "ag-node ag-active" : "ag-node";
+      one("#ag-approve").disabled = !waiting; one("#ag-reject").disabled = !waiting;
+      notice(waiting ? "已重置为等待人工审核。" : "审批反馈示例：" + (accepted ? "通过并继续。" : "拒绝并终止。") + (one("#ag-review-comment").value.trim() || "未填写意见") + "；未写入实际任务。");
+    }
+    on("#ag-approve", () => approval("approved")); on("#ag-reject", () => approval("rejected")); on("#ag-review-reset", () => approval("waiting"));
+    on("#ag-probe", () => { one("#ag-connector-state").textContent = "连接不可用 · 示例"; one("#ag-connector-state").className = "ag-chip ag-failed"; notice("错误状态示例：尚未配置 Ollama 地址与模型。此预览未发送探测请求。"); });
+    on("#ag-audit", () => { one("#ag-audit-result").hidden = false; one("#ag-audit-result").textContent = "校验通过 · 结果样式示例；此预览未读取或验证实际审计数据库。"; });
+    function closeModal() { one("#ag-modal-layer").hidden = true; one(".ag-shell").inert = false; if (returnFocus) returnFocus.focus(); }
+    function openModal(id, first) { returnFocus = document.activeElement; one("#ag-modal-layer").hidden = false; one(".ag-shell").inert = true; all(".ag-modal").forEach(el => { el.hidden = el.id !== id; }); one(first).focus(); }
+    on("#ag-new-project", () => { one("#ag-project-error").hidden = true; one("#ag-project-name").removeAttribute("aria-invalid"); openModal("ag-project-modal", "#ag-project-name"); });
+    on("#ag-credentials", () => openModal("ag-auth-modal", "#ag-auth-modal [data-close]"));
+    all("[data-close]").forEach(el => el.addEventListener("click", closeModal));
+    one("#ag-project-name").addEventListener("input", event => { if (event.target.value.trim()) { one("#ag-project-error").hidden = true; event.target.removeAttribute("aria-invalid"); } });
+    one("#ag-project-form").addEventListener("submit", event => { event.preventDefault(); const input = one("#ag-project-name"); const name = input.value.trim(); if (!name) { one("#ag-project-error").hidden = false; input.setAttribute("aria-invalid", "true"); input.focus(); return; } one("#ag-project-error").hidden = true; input.removeAttribute("aria-invalid"); if (!event.target.reportValidity()) return; closeModal(); notice("创建成功样式示例：" + name + "。此预览未保存项目。"); });
+    one("#ag-modal-layer").addEventListener("keydown", event => {
+      if (event.key === "Escape") { event.preventDefault(); closeModal(); }
+      if (event.key === "Tab") { const modal = all(".ag-modal").find(el => !el.hidden); const controls = [...modal.querySelectorAll("button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled])")]; const first = controls[0], last = controls.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
+    });
+  })();
+  </script>
+</div>

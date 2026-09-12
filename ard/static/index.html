@@ -66,10 +66,10 @@
               <article class="card"><div class="card-head"><div><p class="eyebrow">选中版本</p><h2 id="dataset-title">请选择数据集</h2></div><span id="dataset-seal" class="status-chip neutral">未选择</span></div><div id="dataset-meta" class="meta-grid"></div><div id="dataset-preview" class="table-wrap empty">选择数据集后预览实际数据</div></article>
               <article class="card"><div class="card-head"><div><p class="eyebrow">版本操作</p><h2>清洗与封存</h2></div></div>
                 <div class="form-grid">
-                  <label class="field span-2">清洗操作 JSON<textarea id="transform-operations" rows="5" spellcheck="false">[
+                  <label class="field span-2">清洗规则<textarea id="transform-operations" rows="5" spellcheck="false">[
   {"type": "strip"},
   {"type": "drop_duplicates"}
-]</textarea><small>可编辑操作列表；新结果将封存为独立版本。</small></label>
+]</textarea><small>当前使用 JSON 定义规则；新结果封存为独立版本，保留来源数据。</small></label>
                   <label class="field">新版本名称（可选）<input id="transform-name" placeholder="自动沿用名称"></label>
                   <div class="field button-field"><span>执行</span><button id="transform-run" class="button primary" type="button">清洗并生成版本</button></div>
                   <label class="field">拆分比例<input id="split-ratio" type="number" min="0.01" max="0.99" step="0.01" value="0.8"></label>
@@ -119,7 +119,7 @@
           <div class="dashboard-grid">
             <article class="card span-2"><div class="card-head"><div><p class="eyebrow">资源状态</p><h2>本机执行环境</h2></div></div><div id="operations-resources" class="resource-grid loading">正在读取资源…</div></article>
             <article class="card"><div class="card-head"><div><p class="eyebrow">外部能力</p><h2>连接器</h2></div></div><div id="connector-list" class="micro-list loading">正在检查连接器…</div><button id="ollama-probe" class="button ghost full" type="button">探测 Ollama</button></article>
-            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">不可篡改记录</p><h2>审计日志</h2></div><button id="audit-verify" class="button secondary compact" type="button">验证哈希链</button></div><div id="audit-verification" class="verification-line">尚未执行完整性验证</div><div id="audit-list" class="audit-table table-wrap loading">正在读取审计记录…</div></article>
+            <article class="card span-3"><div class="card-head"><div><p class="eyebrow">操作留痕</p><h2>审计日志</h2></div><button id="audit-verify" class="button secondary compact" type="button">验证哈希链</button></div><p class="design-caption">核对记录完整性与操作来源。当前为本地哈希链，尚未接入外部审计锚定。</p><div id="audit-verification" class="verification-line">尚未执行完整性验证</div><div id="audit-list" class="audit-table table-wrap loading">正在读取审计记录…</div></article>
           </div>
         </section>
       </main>

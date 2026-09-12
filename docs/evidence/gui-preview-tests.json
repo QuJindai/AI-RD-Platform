@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-09-12T07:02:25.650Z",
+  "type": "DOM unit checks; no browser rendering or responsive layout validation",
+  "node": "v24.19.0",
+  "jsdom": "30.0.1",
+  "passed": 13,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Standalone build contains exact source and has no external resources",
+      "status": "PASS"
+    },
+    {
+      "name": "Five page switches show exactly one matching view",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty project hides all sample assets and can restore selected page",
+      "status": "PASS"
+    },
+    {
+      "name": "Project form rejects blank names and out-of-range quotas",
+      "status": "PASS"
+    },
+    {
+      "name": "Project feedback safely renders user text and does not create assets",
+      "status": "PASS"
+    },
+    {
+      "name": "Modal focus cycles, Escape closes and returns focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Credential preview cannot accept real tokens",
+      "status": "PASS"
+    },
+    {
+      "name": "Dataset selection updates selected title and metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "Training submit and cancellation show reversible demo states",
+      "status": "PASS"
+    },
+    {
+      "name": "Expired deployment disables prediction and can restore the sample",
+      "status": "PASS"
+    },
+    {
+      "name": "Search validates blank input and marks source quotations as synthetic",
+      "status": "PASS"
+    },
+    {
+      "name": "Approval and rejection update execution and overview consistently",
+      "status": "PASS"
+    },
+    {
+      "name": "Connector and audit feedback do not claim actual external execution",
+      "status": "PASS"
+    }
+  ]
+}
