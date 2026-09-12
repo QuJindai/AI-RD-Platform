@@ -61,4 +61,4 @@ Files: `README.md`, `requirements*.txt`, `pyproject.toml`, `Dockerfile`, `compos
 - [x] 执行完整pytest、真实HTTP闭环、清洁安装及安装中断恢复测试。
 - [ ] 完成真实浏览器操作、Windows和Docker运行验证，见verification.md的环境限制。
 - [x] 独立代码审查并修复阻塞缺陷。
-- [ ] 提交并推送公开仓库，读回固定提交及文件，核验状态。
+- [x] 提交并推送公开仓库，读回固定提交及文件，核验状态。公开主分支源码树与本地已测试源码树一致；远端CI状态以Actions记录为准。
