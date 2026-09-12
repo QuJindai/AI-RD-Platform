@@ -139,6 +139,7 @@ def create_app(data_dir=None, identities=None):
         app.state.service.close()
 
     app = FastAPI(title='AI-RD-Platform', version=__version__, lifespan=lifespan)
+    app.state.security = security
     allowed = ['localhost', '127.0.0.1', '[::1]', 'testserver']
     allowed += [x.strip() for x in os.environ.get('ARD_ALLOWED_HOSTS', '').split(',') if x.strip()]
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=allowed)
@@ -197,7 +198,8 @@ def create_app(data_dir=None, identities=None):
 
     @app.get('/api/projects/{pid}/datasets')
     def datasets(pid: str, s: Svc, user: User):
-        return s.list('dataset', pid, user)
+        from ard.features.data import is_archived
+        return [asset for asset in s.list('dataset', pid, user) if not is_archived(s, asset)]
 
     @app.post('/api/projects/{pid}/datasets', status_code=201)
     def add_dataset(pid: str, body: DatasetInput, s: Svc, user: User):
@@ -314,7 +316,9 @@ def create_app(data_dir=None, identities=None):
 
     @app.get('/api/projects/{pid}/documents')
     def documents(pid: str, s: Svc, user: User):
-        return s.list('document', pid, user)
+        from ard.knowledge import active_documents
+        s.project(pid, user)
+        return active_documents(s, pid)
 
     @app.post('/api/projects/{pid}/documents', status_code=201)
     def document(pid: str, body: DocumentInput, s: Svc, user: User):
@@ -334,12 +338,8 @@ def create_app(data_dir=None, identities=None):
 
     @app.post('/api/projects/{pid}/workflows', status_code=201)
     def workflow(pid: str, body: WorkflowInput, s: Svc, user: User):
-        from ard.workflows import validate
-        user.allow_write(); s.project(pid, user)
-        validate(body.nodes, body.edges)
-        if body.parent_id and s.record(body.parent_id, 'workflow', user)['project_id'] != pid:
-            raise ValueError('工作流版本不能跨项目')
-        return s.store.create('workflow', pid, {**body.model_dump(), 'creator': user.user}, user.user)
+        from ard.features.workflows import save_workflow
+        return save_workflow(s, pid, body, user, body.parent_id)
 
     @app.post('/api/workflows/{workflow_id}/run', status_code=202)
     def run(workflow_id: str, body: RunInput, s: Svc, user: User):
@@ -370,6 +370,9 @@ def create_app(data_dir=None, identities=None):
         if '*' not in user.projects:
             raise HTTPException(403, '全局审计验证需要全局项目权限')
         return s.store.verify_audit()
+
+    from ard.features import install
+    install(app)
 
     static = Path(__file__).parent / 'static'
     if static.is_dir():

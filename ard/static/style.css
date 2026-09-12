@@ -83,3 +83,17 @@ body{line-height:1.55}
   .form-grid>.span-3{grid-column:auto}.result-box{font-size:.875rem}.flow{gap:20px}
 }
 @media(max-width:430px){.project-switcher .compact{display:inline-flex}.topbar{padding-inline:10px;gap:6px}.project-switcher .compact{min-width:54px}.project-switcher select{padding-right:12px}.page-heading .actions{flex-wrap:wrap}.resource-grid{grid-template-columns:1fr}.approval-actions input{width:100%}}
+
+/* Persistent functional panels use the same product controls and responsive grid. */
+.feature-panel{margin-top:18px}.feature-contents{min-width:0;overflow-wrap:anywhere}
+.feature-panel label{font-size:.875rem}.feature-panel input:not([type=checkbox]):not([type=radio]),.feature-panel select,.feature-panel textarea{max-width:100%;min-width:0;font-size:1rem;min-height:44px}
+.feature-panel textarea{width:100%;resize:vertical}.feature-panel input,.feature-panel select,.feature-panel textarea{border:1px solid #cfdde5;border-radius:8px;padding:10px 11px;background:#fff;color:var(--ink)}
+.feature-panel button{min-height:44px}.feature-panel details{margin-top:16px;border-top:1px solid var(--line);padding-top:8px}
+.feature-panel summary{min-height:44px;cursor:pointer;padding:10px 0;color:var(--navy-800);font-weight:650}
+.feature-panel pre{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.875rem}
+.feature-panel .form-grid{align-items:start}.feature-panel .field{min-width:0}
+.feature-panel .table-wrap{margin-top:12px}.feature-panel table{width:100%;border-collapse:collapse}
+.feature-panel th,.feature-panel td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+.feature-panel .feature-result{margin-top:14px}.feature-panel .feature-note{font-size:.875rem;color:var(--muted);line-height:1.7}
+@media(max-width:1050px){.feature-panel .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.feature-panel .form-grid{grid-template-columns:1fr}.feature-panel .action-bar button{flex:1 1 auto}.feature-panel .span-2,.feature-panel .span-3{grid-column:auto}}

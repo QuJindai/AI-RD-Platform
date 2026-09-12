@@ -1,0 +1,7 @@
+{
+  "name": "ai-rd-platform-ui-tests",
+  "private": true,
+  "scripts": {"test": "node --test tests/*.mjs"},
+  "devDependencies": {"jsdom": "30.0.1"},
+  "engines": {"node": ">=24.15.0"}
+}

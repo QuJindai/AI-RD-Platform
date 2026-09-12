@@ -1,111 +1,133 @@
 # AI-RD-Platform · AI研发工作台
 
-独立公开的AI研发平台工程。将数据版本、审批、真实CPU模型训练、部署预测、知识检索和人工审核工作流连成可运行的链路。
+独立公开的 AI 研发工作台。把数据导入与标注、模型实验、知识库、可视化工作流、工具接入和项目运维连成实际可运行的链路。
 
-**版本：0.1.0，工程验证版。** 当前实现范围、外部适配与尚未完成条款见[需求覆盖表](docs/coverage.md)。原始完整技术要求的所有条款尚未实现，不能将本版本视为整个平台的最终验收版。
+**版本：0.2.0，功能开发版。** 五模块 GUI 已接入持久化后端。具体实现、可选外部适配和后续验收条件见[需求覆盖表](docs/coverage.md)与[功能验收记录](docs/verification-v0.2.md)。
 
-**GUI 1.0 设计已成稿：** 总览、数据工坊、模型实验、智能体与工作流、运维与资源，以及项目和凭据弹窗。见[逐页设计规范](docs/gui/design-spec.md)和[独立交互预览](docs/gui/gui-preview.html)（下载后在浏览器打开，无需后端；全部内容为合成演示）。正式控制台已改善字号、触控尺寸和手机/平板布局；真实浏览器布局验收仍待完成，检查结果见[GUI 验证记录](docs/evidence/gui-design.json)。
+正式控制台含总览、数据工坊、模型实验、智能体与工作流、运维与资源，以及项目和凭据弹窗。早期 [GUI 1.0 设计规范](docs/gui/design-spec.md)和[独立交互预览](docs/gui/gui-preview.html)保留为合成演示；运行平台即可使用新增功能。真实浏览器和目标设备的视觉验收仍待完成。
 
 ## 快速运行
 
-Python 3.12；首次启动需联网安装已锁定依赖。后续运行不需要访问外部模型服务，除非主动使用LLM/向量适配器。
+Python 3.12；首次启动联网安装已锁定依赖。除主动使用外部适配器外，本机运行无需外部模型服务。
 
-```bash
+~~~bash
 git clone https://github.com/QuJindai/AI-RD-Platform.git
 cd AI-RD-Platform
 bash scripts/start.sh
-```
+~~~
 
 Windows PowerShell：
 
-```powershell
+~~~powershell
 git clone https://github.com/QuJindai/AI-RD-Platform.git
 cd AI-RD-Platform
 powershell -ExecutionPolicy Bypass -File scripts/start.ps1
-```
+~~~
 
-打开 [本机控制台](http://127.0.0.1:8000)。默认本机模式无需账号；数据保存在`runtime/`。关闭终端或按Ctrl+C停止服务。自定义端口：`python -m ard --port 8080`。
+打开[本机控制台](http://127.0.0.1:8000)。默认本机模式无需账号；数据保存在 runtime/。按 Ctrl+C 停止服务。自定义端口：python -m ard --port 8080。
 
 ## 一条完整操作链
 
-1. 创建项目，在数据工坊上传CSV/JSON/JSONL/ZIP，或主动创建已明确标记的合成样例。
-2. 预览记录，清洗并生成新版本；可按比例拆分、合并或导出。来源版本保留。
-3. 申请转入模型库并审批。本机模式允许一人演示；令牌模式由不同身份的审核者处理。
-4. 选择目标列、数值特征和分类/回归任务。后台实际训练，并独立计算测试集指标。
-5. 部署模型，输入记录得到预测结果。过期或停用服务拒绝调用。
-6. 录入知识文本，查询并查看来源切片；建立工作流，运行至人工节点、审核后继续。
-7. 在运维页核对任务、资源、审批和审计链。
+1. 创建项目，上传 CSV/JSON/JSONL/XLSX/YAML/XML/HTML/Parquet/ZIP，或从预设只读数据库查询导入快照。
+2. 检索目录、修改元数据为新版本、按比例/类别/指定行拆分，清洗、合并和比较分布；可创建独立标注任务并审核导出。
+3. 申请转入模型库，由审核者处理。本机模式允许演示训练审批；标注仍要求独立审核人。
+4. 保存实验基线，选择数值特征训练分类/回归模型；重评、比较并下载 HTML 报告或 JSON 模型包。
+5. 部署模型，输入记录得到预测并查看实际调用统计。过期或停用服务拒绝调用。
+6. 导入知识文档、维护版本、查看精确来源片段；配置模型后可构建持久向量索引并进行引用问答。
+7. 在可视化编辑器连接节点、配置条件和有界迭代，运行至人工节点审核后继续，或暂停、恢复和重试。
+8. 保存和审核发布技能，按授权执行；管理工具依赖包、MCP 连接及可用时的受管 Docker 实例。
+9. 调整项目额度，采集实际资源样本、处理告警、筛选导出审计和生成可验证备份。
 
-OpenAPI说明位于[本机API文档](http://127.0.0.1:8000/docs)。所有列表和状态来自实际记录。
+OpenAPI 说明位于[本机 API 文档](http://127.0.0.1:8000/docs)。
 
 ## 现有能力
 
-- CSV、JSON数组、JSONL及安全ZIP导入；11种实际数据变换；SHA-256封存、版本来源、拆分合并、配额。
-- LogisticRegression分类与LinearRegression回归；训练集拟合填补/缩放、独立评估集、可检查JSON模型参数。数值表格任务，不加载用户pickle。
-- 模型部署、真实预测、请求/失败/延迟累计、过期校验及手动停用。
-- 五种文本切片策略；中文关键词检索与原文偏移；可选Ollama语义/混合检索和聊天。
-- 11种工作流节点、DAG校验、节点日志、人工等待/审批/恢复、取消与重启状态核对。
-- 项目范围和角色控制、独立审批、不可变资产、带哈希链接的本地审计记录。
-- 中文同源控制台，原生HTML/CSS/JS，不依赖CDN。
+| 模块 | 实际能力与详细接口 |
+|---|---|
+| 数据 | 多格式解析、11 种变换、版本目录、拆分/分布比较、可恢复归档、图像与视频完整性检查、独立行/文本跨度标注。[说明](docs/features/data.md) |
+| 数据源 | SQLite/PostgreSQL/MySQL 预设只读查询、参数验证、缓存及不可变快照。[说明](docs/features/sources.md) |
+| 模型 | LogisticRegression/LinearRegression 真正训练；严格 JSON 模型包、基线、重评/对比/HTML 报告、部署统计、OpenAI 兼容与 Ollama 适配。[说明](docs/features/models.md) |
+| 知识 | TXT/MD/DOCX/PDF/HTML/XLSX 解析、五种切片、源文件保存、版本/归档、关键词检索、持久向量索引及引用问答。[说明](docs/features/knowledge.md) |
+| 工作流和技能 | 16 类节点、实际 SVG 编辑器与 JSON 往返、条件/模板/有界迭代/数据输出、检查点、暂停/恢复/重试、8 个内置技能及受限智能体。[说明](docs/features/workflows.md) |
+| 运维 | 角色和项目权限、原子配额调整、审计 CSV、手动资源采样、告警历史、SHA-256 验证备份与恢复。[说明](docs/features/operations.md) |
+| 工具接入 | 不可变依赖包、Docker 构建上下文、HTTP/SSE MCP 调用、受管容器状态与生命周期。[说明](docs/features/integrations.md) |
+
+中文同源控制台使用原生 HTML/CSS/JavaScript，无运行时 CDN 依赖。所有数据、任务状态及指标来自实际记录。
 
 ## 部署和访问
 
-本机开发模式只接受回环客户端。绑定非回环地址需要`ARD_IDENTITIES`，不会自动开放匿名远程访问。
+本机开发模式只接受回环客户端。绑定非回环地址需要 ARD_IDENTITIES，不会自动开放匿名远程访问。
 
-身份配置为令牌到身份的JSON映射：每个身份包含`user`、单一`role`（admin/developer/reviewer/auditor）和`projects`（项目ID数组或`["*"]`）。真实令牌至少16字符，通过环境配置。不同角色不能共用同一`user`来绕过独立审批。
+身份配置为令牌到身份的 JSON 映射：每个身份包含 user、单一 role（admin/developer/reviewer/auditor）和 projects（项目 ID 数组或 ["*"]）。真实令牌至少 16 字符，通过环境配置。不同角色不能共用同一 user 绕过独立审批。
 
 Docker Compose：
 
-```bash
+~~~bash
 python scripts/configure_access.py
 docker compose up --build -d
-```
+~~~
 
-脚本在本机生成`.env`和访问令牌；它不会覆盖已有配置。此文件已被Git和Docker构建上下文排除。控制台会在需要时询问令牌。多人使用时请在配置中添加独立审核身份；单个owner不能审批自己在令牌模式创建的请求。
+配置脚本在本机生成 .env 和访问令牌；不会覆盖已有配置，文件已从 Git 和 Docker 构建上下文排除。多人使用需添加独立审核身份。默认 Compose 端口仅绑定主机 127.0.0.1；局域网部署同时配置端口、ARD_ALLOWED_HOSTS 与身份。单进程运行，不支持多个应用进程共享同一运行目录。
 
-默认Compose端口只绑定主机127.0.0.1。需要局域网部署时，同时调整端口绑定、`ARD_ALLOWED_HOSTS`和身份配置。单进程运行，暂不支持多个应用进程共享一个运行目录。停止容器使用`docker compose down`；不要使用`-v`，该选项会删除数据卷。
+停止容器用 docker compose down；加 -v 会删除数据卷。Docker 适配已实现，目标主机运行验收仍需真实 Docker 环境。
 
-## 可选Ollama连接
+## 可选模型服务与数据源
 
-在管理员环境中设置：
+Ollama 服务端环境示例：
 
-```text
+~~~text
 ARD_OLLAMA_URL=http://127.0.0.1:11434
 ARD_CHAT_MODEL=<已安装聊天模型名称>
 ARD_EMBED_MODEL=<已安装向量模型名称>
-```
+~~~
 
-模型名称必须使用该Ollama实例中已安装的真实模型。通过控制台“检测连接”获取实时模型目录；仅配置地址不代表连接已验证。未连接时LLM/语义节点返回明确错误。本地关键词检索和CPU训练不依赖Ollama。
+模型名称须存在于目标服务。也可配置 OpenAI 兼容端点；具体变量、超时和响应验证见[模型服务说明](docs/features/models.md)。数据库设置见[只读源配置](docs/features/sources.md)。密钥仅在服务器配置，页面不返回密钥。
+
+语义检索需要开发者显式构建索引；文档或模型配置变化后须更新索引。未连接的外部服务会明确报错。本地关键词检索与 CPU 训练可以独立使用。
 
 ## 验证与恢复
 
-```bash
+~~~bash
 python -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python -m pytest -q
-node --test tests/test_ui.mjs
+npm ci --ignore-scripts
+ARD_PYTHON=.venv/bin/python npm test
 .venv/bin/python scripts/smoke.py --base-url http://127.0.0.1:8000
-```
+~~~
 
-Windows将`.venv/bin/python`改为`.venv/Scripts/python.exe`。界面回归测试使用Node.js 20及以上，应用运行本身不需要Node。smoke脚本只在显式提供的运行服务中创建带唯一名称的合成验收项目，验证真实HTTP流程；可通过`ARD_TOKEN`和`ARD_REVIEW_TOKEN`传递开发/审核身份。本轮实际执行结果见[验证记录](docs/verification.md)。
+Windows 将 Python 路径改为 .venv/Scripts/python.exe，并用 PowerShell 环境变量语法设置 ARD_PYTHON。界面测试需要 Node.js 24.15 及以上；应用运行本身不需要 Node。测试使用非渲染 DOM 模型和真实 HTTP，并不等同于浏览器视觉验收。
 
-运行数据备份：正常停止服务后，完整复制`runtime/`目录。恢复时将其设为`ARD_DATA_DIR`后启动；不要只复制数据库而遗漏`objects/`。在新目录运行不会覆盖原目录。
+原始 smoke.py 和新增 functional_smoke.py 只在显式提供的服务中创建合成验收项目。完整功能验收需要 ARD_TOKEN 为全局管理员、ARD_REVIEW_TOKEN 为不同用户的审核者：
 
-运行中/排队任务在异常重启后标记为INTERRUPTED，等待人工审核的工作流可继续。取消是协作式的；已进入底层数值运算的CPU调用会完成当前计算，但结果不会登记为成功模型。
+~~~bash
+.venv/bin/python scripts/functional_smoke.py --base-url http://127.0.0.1:8000 --output test-results/functional-smoke.json
+~~~
+
+全局管理员可在无活动任务时下载平台备份，然后恢复到新空目录：
+
+~~~bash
+python scripts/restore_backup.py ai-rd-backup.zip /srv/ard-restored
+python -m ard --data-dir /srv/ard-restored
+~~~
+
+备份校验数据库、对象 SHA-256、引用和审计链；不包含服务器私有连接凭据，恢复后需重新配置。也可正常停止服务后完整复制运行目录。
+
+重启时运行中/排队任务会校正为中断或已请求的暂停状态；等待人工审核的流程可继续。暂停与取消在下一个检查点生效；不会把取消任务的计算结果登记为成功模型。
 
 ## 规模与边界
 
-本机数据上限50,000行/200列；上传20MiB，ZIP展开100MiB/200成员；单节点输出8MiB，工作流检查点16MiB；项目活动任务配额默认为4，CPU并行执行槽为2。项目存储配额计量数据、文档和模型内容，工作流/日志另有上述上限；尚无历史日志自动保留/归档策略。
+本机表格上限 50,000 行/200 列；通常上传 20 MiB，知识文档 10 MiB；单节点输出 8 MiB，工作流检查点 16 MiB；默认项目活动任务额度为 4，CPU 执行槽为 2。暂停和等待审批仍占任务额度。归档版本仍占逻辑存储额度。各解析器、运行器和备份的独立限制见模块说明。
 
-当前没有GPU调度器、容器化MCP生命周期管理、图像/视频标注、深度模型训练压缩、ONNX/OM互转、企业三员分立或生产高可用。外部Ollama测试、GPU硬件验收和容器实测结果按证据单列。本地哈希审计链能检测被改写的记录，但没有外部锚定，不能宣称防数据库管理员重写。
+尚未实现 GPU/vGPU 集群调度、深度模型训练压缩、ONNX/OM 通用转换、图像框/视频时间轴标注、MCP stdio/容器绑定管理、企业三员分立或生产高可用。Docker、远程数据库和模型适配器仍需目标环境验证，不能用协议模拟测试代替硬件验收。监控目前为手动采样；本地审计链没有外部锚定。
 
 ## 技术依据与许可
 
-代码采用MIT许可。依赖保持各自许可；未复制其他私有项目代码。
+代码采用 MIT 许可。依赖保持各自许可；未复制其他私有项目代码。
 
-- [FastAPI测试与生命周期](https://fastapi.tiangolo.com/advanced/testing-events/)
-- [scikit-learn模型持久化限制](https://scikit-learn.org/stable/model_persistence.html)
-- [Ollama嵌入接口](https://docs.ollama.com/api/embed)
+- [FastAPI 测试与生命周期](https://fastapi.tiangolo.com/advanced/testing-events/)
+- [scikit-learn 模型持久化限制](https://scikit-learn.org/stable/model_persistence.html)
+- [Ollama 嵌入接口](https://docs.ollama.com/api/embed)
 - [Ollama API](https://docs.ollama.com/api/introduction)
 
-架构见[设计说明](docs/design.md)，实施任务见[开发计划](docs/implementation-plan.md)。
+架构基线见[设计说明](docs/design.md)，本轮边界与实施分工见[功能规格](docs/functional-spec.md)及[开发计划](docs/functional-plan.md)。

@@ -41,7 +41,7 @@ def run(base_url):
             return call('POST', f'/api/approvals/{a["id"]}/decide', json={'decision': 'approve', 'expected_revision': a['revision']}, **kw)
 
         health = call('GET', '/health')
-        check('HTTP health', health['version'] == '0.1.0')
+        check('HTTP health', health['version'] == '0.2.0')
         p = call('POST', '/api/projects', json={'name': '合成验收-' + uuid.uuid4().hex[:8]})
         pid = p['id']
         records = [f'{i},{2*i+3},{int(i>=30)}' for i in range(60)]

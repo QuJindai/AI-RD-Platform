@@ -48,10 +48,12 @@ class Service:
         if len(raw) > 100 * 1024 * 1024:
             raise ValueError('数据集超过100MiB')
         parents = parents or []
-        for parent in parents:
-            if self.record(parent, 'dataset', identity)['project_id'] != pid:
-                raise ValueError('不能跨项目混合数据版本')
-        with self.store.lock:
+        with self.store.transaction():
+            from ard.features.data import require_active
+            for parent in parents:
+                source = require_active(self, self.record(parent, 'dataset', identity))
+                if source['project_id'] != pid:
+                    raise ValueError('不能跨项目混合数据版本')
             self._quota(pid, len(raw))
             digest = self.store.blob(raw)
             return self.store.create('dataset', pid, {'name': name, 'tags': tags, 'parents': parents,
@@ -98,12 +100,14 @@ class Service:
 
     def transfer(self, asset_id, target_pid, identity):
         identity.allow_write()
-        asset = self.record(asset_id, 'dataset', identity)
-        target_pid = target_pid or asset['project_id']
-        self.project(target_pid, identity)
-        return self.store.create('approval', asset['project_id'], {'approval_type': 'dataset',
-              'asset_id': asset_id, 'target_project_id': target_pid, 'status': 'PENDING',
-              'creator': identity.user, 'name': asset['name'] + ' · 转入模型库'}, identity.user)
+        from ard.features.data import require_active
+        with self.store.transaction():
+            asset = require_active(self, self.record(asset_id, 'dataset', identity))
+            target_pid = target_pid or asset['project_id']
+            self.project(target_pid, identity)
+            return self.store.create('approval', asset['project_id'], {'approval_type': 'dataset',
+                  'asset_id': asset_id, 'target_project_id': target_pid, 'status': 'PENDING',
+                  'creator': identity.user, 'name': asset['name'] + ' · 转入模型库'}, identity.user)
 
     def decide(self, approval_id, decision, revision, comment, identity):
         approval = self.record(approval_id, 'approval', identity)
@@ -148,11 +152,13 @@ class Service:
 
     def train(self, asset_id, config, identity):
         identity.allow_write()
-        asset = self.record(asset_id, 'dataset', identity)
-        if not self.approved(asset_id):
-            raise ValueError('数据版本尚未获批转库')
-        project = self.project(asset['project_id'], identity)
-        return self.jobs.submit(asset['project_id'], {'kind': 'train', 'asset_id': asset_id, **config}, identity.user, project['max_jobs'])
+        from ard.features.data import require_active
+        with self.store.transaction():
+            asset = require_active(self, self.record(asset_id, 'dataset', identity))
+            if not self.approved(asset_id):
+                raise ValueError('数据版本尚未获批转库')
+            project = self.project(asset['project_id'], identity)
+            return self.jobs.submit(asset['project_id'], {'kind': 'train', 'asset_id': asset_id, **config}, identity.user, project['max_jobs'])
 
     def run_job(self, job_id):
         job = self.store.get(job_id, 'job')

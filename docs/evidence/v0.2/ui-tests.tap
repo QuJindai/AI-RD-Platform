@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: all feature panels mount and refresh against the actual HTTP API
+ok 1 - all feature panels mount and refresh against the actual HTTP API
+  ---
+  duration_ms: 2012.346321
+  type: 'test'
+  ...
+# Subtest: project refresh updates server-side names and quota settings
+ok 2 - project refresh updates server-side names and quota settings
+  ---
+  duration_ms: 377.625462
+  type: 'test'
+  ...
+# Subtest: a late developer action cannot reenable auditor controls or reveal former inputs
+ok 3 - a late developer action cannot reenable auditor controls or reveal former inputs
+  ---
+  duration_ms: 371.46313
+  type: 'test'
+  ...
+# Subtest: busy buttons are reusable after a project transition without stale cleanup
+ok 4 - busy buttons are reusable after a project transition without stale cleanup
+  ---
+  duration_ms: 312.735718
+  type: 'test'
+  ...
+# Subtest: old project HTTP response cannot replace the new source panel state
+ok 5 - old project HTTP response cannot replace the new source panel state
+  ---
+  duration_ms: 358.035882
+  type: 'test'
+  ...
+# Subtest: JSON dataset export is downloaded as a Blob
+ok 6 - JSON dataset export is downloaded as a Blob
+  ---
+  duration_ms: 406.422687
+  type: 'test'
+  ...
+# Subtest: knowledge reset clears source text, question, results, files and selection
+ok 7 - knowledge reset clears source text, question, results, files and selection
+  ---
+  duration_ms: 3.330608
+  type: 'test'
+  ...
+# Subtest: late knowledge document detail cannot repopulate another identity or project
+ok 8 - late knowledge document detail cannot repopulate another identity or project
+  ---
+  duration_ms: 0.925298
+  type: 'test'
+  ...
+# Subtest: late document response cannot replace a newer selection in the same project
+ok 9 - late document response cannot replace a newer selection in the same project
+  ---
+  duration_ms: 0.821884
+  type: 'test'
+  ...
+# Subtest: late generated answer cannot enter the new project
+ok 10 - late generated answer cannot enter the new project
+  ---
+  duration_ms: 0.943466
+  type: 'test'
+  ...
+# Subtest: a delayed dataset response cannot replace the newly selected project
+ok 11 - a delayed dataset response cannot replace the newly selected project
+  ---
+  duration_ms: 4.814074
+  type: 'test'
+  ...
+# Subtest: late dataset detail 200 cannot overwrite another selection in the same project
+ok 12 - late dataset detail 200 cannot overwrite another selection in the same project
+  ---
+  duration_ms: 3.997609
+  type: 'test'
+  ...
+# Subtest: late dataset detail 400 cannot overwrite another selection in the same project
+ok 13 - late dataset detail 400 cannot overwrite another selection in the same project
+  ---
+  duration_ms: 1.794914
+  type: 'test'
+  ...
+# Subtest: identity reset removes all prior identity and project data
+ok 14 - identity reset removes all prior identity and project data
+  ---
+  duration_ms: 1.282855
+  type: 'test'
+  ...
+# Subtest: a valid credential switch cannot reveal a delayed prior identity response
+ok 15 - a valid credential switch cannot reveal a delayed prior identity response
+  ---
+  duration_ms: 4.386512
+  type: 'test'
+  ...
+# Subtest: an invalid replacement credential clears prior visible data before failure
+ok 16 - an invalid replacement credential clears prior visible data before failure
+  ---
+  duration_ms: 1.507762
+  type: 'test'
+  ...
+# Subtest: job status transition refreshes the actual overview
+ok 17 - job status transition refreshes the actual overview
+  ---
+  duration_ms: 1.650317
+  type: 'test'
+  ...
+# Subtest: expired ACTIVE deployments are not offered for prediction
+ok 18 - expired ACTIVE deployments are not offered for prediction
+  ---
+  duration_ms: 13.310713
+  type: 'test'
+  ...
+# Subtest: a 410 prediction response refreshes and removes the deployment
+ok 19 - a 410 prediction response refreshes and removes the deployment
+  ---
+  duration_ms: 1.653531
+  type: 'test'
+  ...
+# Subtest: workflow preview rejects an edge whose endpoint is unknown
+ok 20 - workflow preview rejects an edge whose endpoint is unknown
+  ---
+  duration_ms: 1.260351
+  type: 'test'
+  ...
+# Subtest: workflow preview rejects a node disconnected from the input-output path
+ok 21 - workflow preview rejects a node disconnected from the input-output path
+  ---
+  duration_ms: 0.901903
+  type: 'test'
+  ...
+# Subtest: visual editor renders actual branches and roundtrips node edits to saved JSON
+ok 22 - visual editor renders actual branches and roundtrips node edits to saved JSON
+  ---
+  duration_ms: 137.847664
+  type: 'test'
+  ...
+# Subtest: keyboard and drag ordering change actual node JSON while preserving edges
+ok 23 - keyboard and drag ordering change actual node JSON while preserving edges
+  ---
+  duration_ms: 49.338444
+  type: 'test'
+  ...
+# Subtest: workflow reset clears both editor and legacy JSON and discards delayed validation
+ok 24 - workflow reset clears both editor and legacy JSON and discards delayed validation
+  ---
+  duration_ms: 32.062691
+  type: 'test'
+  ...
+# Subtest: skill invocation sends the selected version and renders returned text safely
+ok 25 - skill invocation sends the selected version and renders returned text safely
+  ---
+  duration_ms: 31.234468
+  type: 'test'
+  ...
+# Subtest: agent uses explicitly checked grants and reset blocks a delayed prior-project result
+ok 26 - agent uses explicitly checked grants and reset blocks a delayed prior-project result
+  ---
+  duration_ms: 27.444492
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4521.423769

@@ -1,0 +1,1096 @@
+{
+  "status": "PASS",
+  "transport": "real HTTP",
+  "data_classification": "synthetic only",
+  "started_at": "2026-09-12T08:06:19.063522+00:00",
+  "base_url": "http://127.0.0.1:47545",
+  "checks": [
+    {
+      "name": "HTTP service health",
+      "status": "PASS"
+    },
+    {
+      "name": "Global administrator acceptance identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Distinct independent reviewer identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Data immutable transform",
+      "status": "PASS",
+      "evidence": {
+        "source_id": "41d8db1dca044e3486cd84c50ddba99d",
+        "version_id": "53cdb0f01fd64616879e3ed2c9e5c7da"
+      }
+    },
+    {
+      "name": "Data export bytes and SHA-256",
+      "status": "PASS"
+    },
+    {
+      "name": "Data metadata creates immutable version",
+      "status": "PASS"
+    },
+    {
+      "name": "Data searchable version catalogue",
+      "status": "PASS"
+    },
+    {
+      "name": "Data exact category partition",
+      "status": "PASS"
+    },
+    {
+      "name": "Data distribution comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "Data archive removes catalogue entry and retains bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Data archive restoration",
+      "status": "PASS"
+    },
+    {
+      "name": "Annotation available identity list",
+      "status": "PASS"
+    },
+    {
+      "name": "Annotation selected source rows",
+      "status": "PASS"
+    },
+    {
+      "name": "Annotation immutable submission",
+      "status": "PASS",
+      "evidence": {
+        "task_id": "f4319fe6ae624fab84665905995dadbe"
+      }
+    },
+    {
+      "name": "Annotation self-review is denied",
+      "status": "PASS"
+    },
+    {
+      "name": "Annotation independent review",
+      "status": "PASS"
+    },
+    {
+      "name": "Annotation reviewed immutable dataset export",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge actual TXT import and source SHA",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge original byte export",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge exact Unicode source offsets",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge source context preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge edit creates immutable version",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge matched current-version citations",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge no-hit suppresses generation",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge archive excludes all historical versions from retrieval",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge reversible archive",
+      "status": "PASS"
+    },
+    {
+      "name": "Model training data approval",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual CPU model training",
+      "status": "PASS",
+      "evidence": {
+        "job_id": "8704dcd92e8443189180f33597fd3c70",
+        "actual_status": "SUCCEEDED",
+        "error": null
+      }
+    },
+    {
+      "name": "Model held-out training metrics",
+      "status": "PASS",
+      "evidence": {
+        "model_id": "c58b7653fff94e278f075b5dd7fd880d",
+        "accuracy": 1.0
+      }
+    },
+    {
+      "name": "Model validated JSON package roundtrip",
+      "status": "PASS",
+      "evidence": {
+        "imported_model_id": "d688a53df54e47b98ca991a3e8473f04"
+      }
+    },
+    {
+      "name": "Model reusable baseline execution",
+      "status": "PASS",
+      "evidence": {
+        "job_id": "b164542cc665450a8c93d7b4a5225c1e",
+        "actual_status": "SUCCEEDED",
+        "error": null
+      }
+    },
+    {
+      "name": "Model baseline retains immutable data/config/run",
+      "status": "PASS"
+    },
+    {
+      "name": "Model actual reevaluation on selected dataset",
+      "status": "PASS",
+      "evidence": {
+        "evaluation_id": "925ca71b37694dfbb712cfb6d8a9fbed"
+      }
+    },
+    {
+      "name": "Model comparison uses common rows",
+      "status": "PASS"
+    },
+    {
+      "name": "Model downloadable HTML evidence report",
+      "status": "PASS"
+    },
+    {
+      "name": "Model actual deployment predictions",
+      "status": "PASS"
+    },
+    {
+      "name": "Model recorded deployment statistics",
+      "status": "PASS"
+    },
+    {
+      "name": "Model deployment stop",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow new node definition validation",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow package roundtrip",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow actual branch/iteration execution",
+      "status": "PASS",
+      "evidence": {
+        "job_id": "5b6c330bf1ef478daee84b1b22735d82",
+        "actual_status": "SUCCEEDED",
+        "error": null
+      }
+    },
+    {
+      "name": "Workflow immutable dataset output and skipped branch",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow alternate branch execution",
+      "status": "PASS",
+      "evidence": {
+        "job_id": "9d52638a557242e28d83bbb5a1e68250",
+        "actual_status": "SUCCEEDED",
+        "error": null
+      }
+    },
+    {
+      "name": "Workflow safe template and bounded branch outputs",
+      "status": "PASS"
+    },
+    {
+      "name": "Eight useful builtin skill definitions",
+      "status": "PASS"
+    },
+    {
+      "name": "Skill actual invocation and persistent run history",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations project settings and revision",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations actual manual telemetry sample",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations threshold alert from actual sample",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations alert acknowledge/resolve history",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations telemetry CSV export",
+      "status": "PASS"
+    },
+    {
+      "name": "Operations actual scoped audit CSV",
+      "status": "PASS",
+      "evidence": {
+        "scoped_rows": 86,
+        "project_metadata_rows": 2
+      }
+    },
+    {
+      "name": "Operations local audit hash chain",
+      "status": "PASS"
+    },
+    {
+      "name": "Dependency package actual upload and manifest",
+      "status": "PASS"
+    },
+    {
+      "name": "Dependency package byte-preserving download",
+      "status": "PASS"
+    },
+    {
+      "name": "Dependency requirements discovery export",
+      "status": "PASS"
+    },
+    {
+      "name": "Whole-platform backup transport digest",
+      "status": "PASS"
+    },
+    {
+      "name": "Backup ZIP manifest format and membership",
+      "status": "PASS"
+    },
+    {
+      "name": "Backup every data member SHA-256 and length",
+      "status": "PASS",
+      "evidence": {
+        "checked_files": 18
+      }
+    },
+    {
+      "name": "Backup includes actual cross-module source and artifact blobs",
+      "status": "PASS",
+      "evidence": {
+        "required_objects": 9,
+        "object_count": 17
+      }
+    },
+    {
+      "name": "Backup SQLite integrity and persisted feature output",
+      "status": "PASS"
+    }
+  ],
+  "http_calls": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status_code": 200,
+      "elapsed_ms": 3.129,
+      "response_bytes": 60,
+      "response_sha256": "ae12a9fbf00e24e7c052ce9a87f8fe485b59b0e4089bf744991c2436903357bb"
+    },
+    {
+      "method": "GET",
+      "path": "/api/me",
+      "status_code": 200,
+      "elapsed_ms": 1.622,
+      "response_bytes": 66,
+      "response_sha256": "46a53025bacfec3d4176e1666dd9c0237db9e23711a232265bb7c771382ed445"
+    },
+    {
+      "method": "GET",
+      "path": "/api/me",
+      "status_code": 200,
+      "elapsed_ms": 1.102,
+      "response_bytes": 72,
+      "response_sha256": "783a38e589982597099fef90fd4896440ed367a35a08245064f9664515964d57"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "status_code": 201,
+      "elapsed_ms": 3.121,
+      "response_bytes": 357,
+      "response_sha256": "7c1e726c86ec1192cde5db4c10e26480b0d845ee5fc48fd497fe2a6042648d57"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/datasets",
+      "status_code": 201,
+      "elapsed_ms": 2.957,
+      "response_bytes": 685,
+      "response_sha256": "ea54da9d221a4b62227d6513a267c3d3fbc7f5ed1641675a65f86b96a14bd073"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/41d8db1dca044e3486cd84c50ddba99d/transform",
+      "status_code": 201,
+      "elapsed_ms": 3.625,
+      "response_bytes": 714,
+      "response_sha256": "50e4d14e04c5cf943565744ad4a4d028a7c9032f2ed154beb4b2e62eb4f1a994"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/53cdb0f01fd64616879e3ed2c9e5c7da/export",
+      "status_code": 200,
+      "elapsed_ms": 1.432,
+      "response_bytes": 1558,
+      "response_sha256": "c3f71b447247cbc7180390ecfa8d86f791c6c5faffbaa4939fc80496fa5f5561"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/53cdb0f01fd64616879e3ed2c9e5c7da/metadata-version",
+      "status_code": 201,
+      "elapsed_ms": 14.837,
+      "response_bytes": 843,
+      "response_sha256": "e72bb74945e9bee1efb119f1fc9ae166fcfb79e0f5ddb7f564338d21128a7681"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/data-catalog?q=http-v1",
+      "status_code": 200,
+      "elapsed_ms": 2.809,
+      "response_bytes": 1030,
+      "response_sha256": "69e16c127e1c3533bbca1da01905fcb686959b39b0b3b364d0152f355f0d4675"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/53cdb0f01fd64616879e3ed2c9e5c7da/partition",
+      "status_code": 201,
+      "elapsed_ms": 3.56,
+      "response_bytes": 1449,
+      "response_sha256": "ffafea2d4eb511cdeb25001d8c6c84214087b1795bb49af43097b9dfe3ad625d"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/88b8cbd4619a4d048d96be6d4df6c116/rows?limit=100",
+      "status_code": 200,
+      "elapsed_ms": 1.939,
+      "response_bytes": 787,
+      "response_sha256": "33f5c0ac03884b5e89281d9e0ef8351d06853a3a6f04ae5d6203520b90c6be9c"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/4f46586853794d5795e53a4864f1fc78/rows?limit=100",
+      "status_code": 200,
+      "elapsed_ms": 1.717,
+      "response_bytes": 812,
+      "response_sha256": "887eff6268172375a999b26d87e034ba02b9226c37187ccee88883a7898cc4b9"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/data-distributions",
+      "status_code": 200,
+      "elapsed_ms": 3.402,
+      "response_bytes": 1789,
+      "response_sha256": "1346be6aeecba48415b989403d06e34d36e6c227fc1acec2b44b20a6f7746237"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/88b8cbd4619a4d048d96be6d4df6c116/archive",
+      "status_code": 201,
+      "elapsed_ms": 2.048,
+      "response_bytes": 368,
+      "response_sha256": "e0d2e3e61c338292c24db60de87cd56cb332abbc12d34a41135609a88aa1af42"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/data-catalog",
+      "status_code": 200,
+      "elapsed_ms": 2.554,
+      "response_bytes": 3814,
+      "response_sha256": "b6bcac6fe30bdb728a66bd710ce62ff4d2cb3acd7089602113f4f54c6220c4b1"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/88b8cbd4619a4d048d96be6d4df6c116/export",
+      "status_code": 200,
+      "elapsed_ms": 1.514,
+      "response_bytes": 767,
+      "response_sha256": "d78f02f4de1afc5456503b4a5ce29f0cd3da53e38c24ec385b940a9c440539cf"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/88b8cbd4619a4d048d96be6d4df6c116/archive",
+      "status_code": 201,
+      "elapsed_ms": 1.621,
+      "response_bytes": 360,
+      "response_sha256": "08a3de9461cbb0e9daa4536b15e0b3069558cc69fac199b3d3c9dd8cb05e9463"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/datasets",
+      "status_code": 201,
+      "elapsed_ms": 2.088,
+      "response_bytes": 550,
+      "response_sha256": "35e2d13deec9c572df61d79836b64955003e279721a525cda1bcee91b3df4100"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/annotation-annotators",
+      "status_code": 200,
+      "elapsed_ms": 1.799,
+      "response_bytes": 36,
+      "response_sha256": "88ea4a152e70cd8095b8f60e41c35d9aded0c67224943170deaf65e2afe504b6"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/annotation-tasks",
+      "status_code": 201,
+      "elapsed_ms": 2.228,
+      "response_bytes": 499,
+      "response_sha256": "da2c97958233f60701c3e2d245f143e04f8be3b19eb8d147eef2ef8946fecb52"
+    },
+    {
+      "method": "GET",
+      "path": "/api/annotation-tasks/f4319fe6ae624fab84665905995dadbe/rows",
+      "status_code": 200,
+      "elapsed_ms": 2.08,
+      "response_bytes": 127,
+      "response_sha256": "c6f8001c82eac41bbca5a37ba6d3ccddf767127ee630c323759d240f089dc867"
+    },
+    {
+      "method": "POST",
+      "path": "/api/annotation-tasks/f4319fe6ae624fab84665905995dadbe/submit",
+      "status_code": 201,
+      "elapsed_ms": 2.592,
+      "response_bytes": 876,
+      "response_sha256": "5ce051440912703eb9cdce93bcc981560c66c7cb61f1f84ba7af570419e13d83"
+    },
+    {
+      "method": "POST",
+      "path": "/api/annotation-tasks/f4319fe6ae624fab84665905995dadbe/review",
+      "status_code": 403,
+      "elapsed_ms": 1.861,
+      "response_bytes": 49,
+      "response_sha256": "cde99c58b7128dbccb8ecd551eaaa4cb0425b6fb23773cde354b1c6acc85c9c4"
+    },
+    {
+      "method": "POST",
+      "path": "/api/annotation-tasks/f4319fe6ae624fab84665905995dadbe/review",
+      "status_code": 201,
+      "elapsed_ms": 2.506,
+      "response_bytes": 1696,
+      "response_sha256": "50d4e8d3429eca1ef9434ab9b9adba1ddf61141ca2e03b0df595072ade966d8f"
+    },
+    {
+      "method": "POST",
+      "path": "/api/annotation-tasks/f4319fe6ae624fab84665905995dadbe/export",
+      "status_code": 201,
+      "elapsed_ms": 3.073,
+      "response_bytes": 882,
+      "response_sha256": "42574efe76dae3b22bb39cc6a9294958e9ed559ce499d65d7bac295bf83bb446"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/25ba0f19b99e457daf841ec5b79190db/rows?limit=100",
+      "status_code": 200,
+      "elapsed_ms": 1.635,
+      "response_bytes": 165,
+      "response_sha256": "9c492a7f7e84d2b22f62c29e35eb4ab2353830889d31ff582feb1d439f23b57b"
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/import",
+      "status_code": 201,
+      "elapsed_ms": 11.758,
+      "response_bytes": 830,
+      "response_sha256": "f20f54b506660f8bfac16f3a8fec23f87396d27c17c553c442dee1d63dd27ab3"
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95/export?format=source",
+      "status_code": 200,
+      "elapsed_ms": 1.805,
+      "response_bytes": 119,
+      "response_sha256": "50b6ce647f2e37cf2904f8ea945b22e71ff95fed2bae05252e55cc5170431528"
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95",
+      "status_code": 200,
+      "elapsed_ms": 2.093,
+      "response_bytes": 1361,
+      "response_sha256": "5a674c10b2d4b6a08f58af167d6f9d10b0f9b164da8cb8106b02308a1845f78f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95/chunks",
+      "status_code": 200,
+      "elapsed_ms": 2.112,
+      "response_bytes": 698,
+      "response_sha256": "f69fe88c7b6d00ae83dd8f3016aceaa73859555779f64b3176e268e6c7ab15db"
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95/chunks/0?context=8",
+      "status_code": 200,
+      "elapsed_ms": 1.64,
+      "response_bytes": 506,
+      "response_sha256": "b227db045c2e6518948844206b5b6118916d89b70a01a1c65e7d4ee1d90b53a0"
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95/versions",
+      "status_code": 201,
+      "elapsed_ms": 2.888,
+      "response_bytes": 1055,
+      "response_sha256": "69b9dab12dbf4ec87894367d356b6605e5ff54f946b1c58faeb85fd166104405"
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge/documents/c2bbeeef03424b1fbc2ad262b5119a95",
+      "status_code": 200,
+      "elapsed_ms": 2.031,
+      "response_bytes": 1362,
+      "response_sha256": "f1d7e265723003b80ba011ea240ec0ba5b124de909e0a1e6a19ababbc07936a2"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/search",
+      "status_code": 200,
+      "elapsed_ms": 5.835,
+      "response_bytes": 878,
+      "response_sha256": "92b6eae0a4332758b525cd2198c2d9bca71c4ef09104bb04311b5e3f435affa5"
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/answer",
+      "status_code": 200,
+      "elapsed_ms": 4.044,
+      "response_bytes": 429,
+      "response_sha256": "8da346bc2f3fec293fa8cf532a20e5fe6db3339149228427cbbf3158921b43df"
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge/documents/a480c33385e44a8cb3bd7b93004f7e0f/archive",
+      "status_code": 200,
+      "elapsed_ms": 2.893,
+      "response_bytes": 192,
+      "response_sha256": "de6b010561d6a598b02a5eef0978d64d9a0311f79953e2720c3b17c6ef94c569"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/search",
+      "status_code": 200,
+      "elapsed_ms": 1.976,
+      "response_bytes": 118,
+      "response_sha256": "ef2d633945f45d399f7e779795c8e9ae66fd78aa78424fe9f0823d89493f8e39"
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge/documents/a480c33385e44a8cb3bd7b93004f7e0f/archive",
+      "status_code": 200,
+      "elapsed_ms": 2.506,
+      "response_bytes": 193,
+      "response_sha256": "7b1af96ae13690bbc1f030c5a1c397519139923aa6c4c2c0a40d14c7d2048ff5"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/53cdb0f01fd64616879e3ed2c9e5c7da/transfer",
+      "status_code": 201,
+      "elapsed_ms": 1.705,
+      "response_bytes": 440,
+      "response_sha256": "a9de2f541926a77f575d1918d3602eb04f1d2e4f85e91a4e30695fbcc27143c1"
+    },
+    {
+      "method": "POST",
+      "path": "/api/approvals/551289772b054cf595bdd824422f131d/decide",
+      "status_code": 200,
+      "elapsed_ms": 2.079,
+      "response_bytes": 612,
+      "response_sha256": "94fbe31385375e5656a5e460f1c4cdbaa1a21fb2accced8880a8f6bdcdff898d"
+    },
+    {
+      "method": "POST",
+      "path": "/api/assets/53cdb0f01fd64616879e3ed2c9e5c7da/train",
+      "status_code": 202,
+      "elapsed_ms": 2.224,
+      "response_bytes": 531,
+      "response_sha256": "547d66ff53cb0803070702e58698910ccaf9c562ec56072bdb5442e26930d7b8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/8704dcd92e8443189180f33597fd3c70",
+      "status_code": 200,
+      "elapsed_ms": 24.685,
+      "response_bytes": 692,
+      "response_sha256": "62e7dd3354c1ca12cb9972097950944eb98f10ed6c2dc69530810c3c0e8828bb"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/8704dcd92e8443189180f33597fd3c70",
+      "status_code": 200,
+      "elapsed_ms": 2.978,
+      "response_bytes": 982,
+      "response_sha256": "4ea5c560b48b201ba72c98f76b9069394fb333bf878e2af1b37ba157e1c0728f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/models/c58b7653fff94e278f075b5dd7fd880d",
+      "status_code": 200,
+      "elapsed_ms": 1.791,
+      "response_bytes": 662,
+      "response_sha256": "fb7722c474682a657c0433c2d826a52748f49578d2745c9cd28ba2c79425a60c"
+    },
+    {
+      "method": "GET",
+      "path": "/api/models/c58b7653fff94e278f075b5dd7fd880d/package",
+      "status_code": 200,
+      "elapsed_ms": 41.909,
+      "response_bytes": 535,
+      "response_sha256": "71538569a37bd5d0a09c182b656aae60aee33d0d2d0ded2d1dbede38d33c8250"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/models/import",
+      "status_code": 201,
+      "elapsed_ms": 3.494,
+      "response_bytes": 663,
+      "response_sha256": "9cef62c902cead0002e0a2a38a70ed4ecd2ee282e599a4006b8e8168587f84a8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/models/d688a53df54e47b98ca991a3e8473f04/package",
+      "status_code": 200,
+      "elapsed_ms": 1.813,
+      "response_bytes": 535,
+      "response_sha256": "71538569a37bd5d0a09c182b656aae60aee33d0d2d0ded2d1dbede38d33c8250"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/model-baselines",
+      "status_code": 201,
+      "elapsed_ms": 3.263,
+      "response_bytes": 606,
+      "response_sha256": "43e7b631e73f57f5b6a5ee65c1782e41d82d0621de165707a6f7e7e3d41f4ab3"
+    },
+    {
+      "method": "POST",
+      "path": "/api/model-baselines/3951d5e3299144a28a6b03d5396424ca/run",
+      "status_code": 202,
+      "elapsed_ms": 3.59,
+      "response_bytes": 580,
+      "response_sha256": "32b4e768aa7c6248651b43c0d99f536e46f058298515b8bb6c000303d0213778"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/b164542cc665450a8c93d7b4a5225c1e",
+      "status_code": 200,
+      "elapsed_ms": 11.346,
+      "response_bytes": 741,
+      "response_sha256": "7dd0395e31c3afd2da3747f209d50140e436265030a147e3f291d729b81a60b1"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/b164542cc665450a8c93d7b4a5225c1e",
+      "status_code": 200,
+      "elapsed_ms": 3.299,
+      "response_bytes": 1031,
+      "response_sha256": "a26b08cec61b4bb53eceb746237e8de3c5eb127aeb59cb786bb13ba90e3660a7"
+    },
+    {
+      "method": "GET",
+      "path": "/api/model-baselines/3951d5e3299144a28a6b03d5396424ca/runs",
+      "status_code": 200,
+      "elapsed_ms": 3.361,
+      "response_bytes": 1033,
+      "response_sha256": "4a51eb81e6a5931a18489150559c87d34e9d9e1ae637df2f76839dc840a9a6c4"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/datasets",
+      "status_code": 201,
+      "elapsed_ms": 3.289,
+      "response_bytes": 678,
+      "response_sha256": "cadcee1c1aba493f94c163ecea04f15293d0c7b7891a606649788877de65504d"
+    },
+    {
+      "method": "POST",
+      "path": "/api/models/c58b7653fff94e278f075b5dd7fd880d/evaluate",
+      "status_code": 201,
+      "elapsed_ms": 6.269,
+      "response_bytes": 1253,
+      "response_sha256": "ff415941476d91d880d73821a4482847965905b0e18a3fa07c7a960bd5a0dc94"
+    },
+    {
+      "method": "GET",
+      "path": "/api/model-evaluations/925ca71b37694dfbb712cfb6d8a9fbed/rows",
+      "status_code": 200,
+      "elapsed_ms": 2.094,
+      "response_bytes": 906,
+      "response_sha256": "f48ead3631cedfd688d9f9db9ffde745548d915c5ea6dc04d00617afc44cb362"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/model-comparisons",
+      "status_code": 201,
+      "elapsed_ms": 7.478,
+      "response_bytes": 1180,
+      "response_sha256": "22e4f88a7b25fe976de113b584918ef89783fed18146d7f3b284523171494404"
+    },
+    {
+      "method": "GET",
+      "path": "/api/model-evaluations/925ca71b37694dfbb712cfb6d8a9fbed/report",
+      "status_code": 200,
+      "elapsed_ms": 2.304,
+      "response_bytes": 2886,
+      "response_sha256": "cd5d6fe2ec6a4afa6fdeaa26d658c9603438c223b13fd6046d7c54ebdaf1f710"
+    },
+    {
+      "method": "POST",
+      "path": "/api/models/c58b7653fff94e278f075b5dd7fd880d/deploy",
+      "status_code": 201,
+      "elapsed_ms": 2.603,
+      "response_bytes": 445,
+      "response_sha256": "2c2b2db7773dc8028aa308997f1276b728c1997ca710e9a06b56c8a3c1246f47"
+    },
+    {
+      "method": "POST",
+      "path": "/api/deployments/41421fe90c954e8d8ff3e592a4779ad6/predict",
+      "status_code": 200,
+      "elapsed_ms": 3.102,
+      "response_bytes": 67,
+      "response_sha256": "39460b561fec976f61b10f1de37edd39f17e22c14797fdf5e7c88371391a589f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/deployment-statistics",
+      "status_code": 200,
+      "elapsed_ms": 2.097,
+      "response_bytes": 628,
+      "response_sha256": "bec32e07c3de5daffb3f94ea0f1f14822ab7dc03e2da4a2e95c2e41c2ca6d644"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/deployments",
+      "status_code": 200,
+      "elapsed_ms": 2.028,
+      "response_bytes": 464,
+      "response_sha256": "861b6b3429624128c6f9bec13b83a3dfd53da3ea2f6ab37f237b0b9b9ee756fc"
+    },
+    {
+      "method": "POST",
+      "path": "/api/deployments/41421fe90c954e8d8ff3e592a4779ad6/stop",
+      "status_code": 200,
+      "elapsed_ms": 2.436,
+      "response_bytes": 463,
+      "response_sha256": "c839dcafe396cc0b461e1736ad8e4c5bd515811e8ab63fefe64084cca291f581"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/workflows/validate",
+      "status_code": 200,
+      "elapsed_ms": 7.037,
+      "response_bytes": 185,
+      "response_sha256": "eb7bbb7ee680662f759a75edc8235c89808b2367593e69aca8853fe2c5662bae"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/workflows",
+      "status_code": 201,
+      "elapsed_ms": 2.169,
+      "response_bytes": 1154,
+      "response_sha256": "37f26029787b9a29a7980a62b98f56c3e0e16d309fcff5e394bcde35472ebe1f"
+    },
+    {
+      "method": "GET",
+      "path": "/api/workflows/a730c7b9ccaa4a64b9af5ee4bf9844ce/export",
+      "status_code": 200,
+      "elapsed_ms": 1.575,
+      "response_bytes": 941,
+      "response_sha256": "21f685dc205056e302cf83936cc7c3a7b959c638c10d61e631fa8d3bed087e30"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/workflows/import",
+      "status_code": 201,
+      "elapsed_ms": 2.386,
+      "response_bytes": 1154,
+      "response_sha256": "648e5eeba749a11673536fec9f4f2275c336865472d6fbe776a9ce55da0e28ae"
+    },
+    {
+      "method": "POST",
+      "path": "/api/workflows/a730c7b9ccaa4a64b9af5ee4bf9844ce/run",
+      "status_code": 202,
+      "elapsed_ms": 3.276,
+      "response_bytes": 522,
+      "response_sha256": "4b31bb868c1f13c66a0ff193feea2bb299f756b6f7155c4dd882ded5ee9cdfc2"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/5b6c330bf1ef478daee84b1b22735d82",
+      "status_code": 200,
+      "elapsed_ms": 2.916,
+      "response_bytes": 571,
+      "response_sha256": "9ee9f9f59502e831b3d8683ce1707c1330cbc35044d68e2b7e939dda3a489c97"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/5b6c330bf1ef478daee84b1b22735d82",
+      "status_code": 200,
+      "elapsed_ms": 3.387,
+      "response_bytes": 4553,
+      "response_sha256": "ceaf2ce76b13b5b99c9b96ae3d2b03a7342fb2d06abf9883eda162950a9d9475"
+    },
+    {
+      "method": "GET",
+      "path": "/api/assets/7fdfe299ded54908966119caabb18809/rows",
+      "status_code": 200,
+      "elapsed_ms": 2.236,
+      "response_bytes": 112,
+      "response_sha256": "c49f61b2b7c01f227ed64eb9783ab58c8385eeb947c91cab90aa50c0421dfa58"
+    },
+    {
+      "method": "POST",
+      "path": "/api/workflows/a730c7b9ccaa4a64b9af5ee4bf9844ce/run",
+      "status_code": 202,
+      "elapsed_ms": 2.62,
+      "response_bytes": 484,
+      "response_sha256": "5cd6155a40d81df02381167ed23a92f29a3c5476eb439cc784df5f4ff2195b7a"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/9d52638a557242e28d83bbb5a1e68250",
+      "status_code": 200,
+      "elapsed_ms": 2.912,
+      "response_bytes": 533,
+      "response_sha256": "4ad61bcfaa42695bb4f15641ab0871585ddaaf754bce5366ff3f5a7398b3d920"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/9d52638a557242e28d83bbb5a1e68250",
+      "status_code": 200,
+      "elapsed_ms": 2.884,
+      "response_bytes": 1784,
+      "response_sha256": "4e84784b59c6e735cded32b21886e162d3605e3bb19455b979d1d64ed2abb782"
+    },
+    {
+      "method": "GET",
+      "path": "/api/skills/builtins",
+      "status_code": 200,
+      "elapsed_ms": 9.669,
+      "response_bytes": 4871,
+      "response_sha256": "61bd21036726efaf37305887cbd56ec9126e7a89ce76287454078936fb6a5947"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/skills",
+      "status_code": 201,
+      "elapsed_ms": 3.189,
+      "response_bytes": 417,
+      "response_sha256": "4ca51f17f91ffe59f938343466c30642e5ba88d30e00d87d46496da27268b3ba"
+    },
+    {
+      "method": "POST",
+      "path": "/api/skills/51f5da665248417d8473d0e7d13fa294/invoke",
+      "status_code": 200,
+      "elapsed_ms": 4.697,
+      "response_bytes": 708,
+      "response_sha256": "ce73913efb3d342fdf07c14420eb5dff20c98ea489788912c7cdcd7021823a84"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/skill-runs",
+      "status_code": 200,
+      "elapsed_ms": 2.112,
+      "response_bytes": 710,
+      "response_sha256": "d03bf4537b6af824be887850aff519d8699ff2d3277199cf6733dd58b0c90c77"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/settings",
+      "status_code": 200,
+      "elapsed_ms": 11.631,
+      "response_bytes": 633,
+      "response_sha256": "3ff940b9cec5027874720de834912e17fa99fd1fdd0de27cfee311aa56f960ef"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/settings",
+      "status_code": 200,
+      "elapsed_ms": 3.702,
+      "response_bytes": 690,
+      "response_sha256": "0694165da26e307045831bca6e09ed3aeec0cb55dd10097ea285d5ffe6cd43ef"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/alert-rules",
+      "status_code": 201,
+      "elapsed_ms": 2.242,
+      "response_bytes": 355,
+      "response_sha256": "30c05367148f85ae0e4e7d37d6d6f67e30b262ca55115d6bffe261a8e411d98b"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/telemetry/sample",
+      "status_code": 201,
+      "elapsed_ms": 105.047,
+      "response_bytes": 1069,
+      "response_sha256": "86f4c4e03885360812dce25f23b96b3139b90ad9b728c3463a5c9d643436be5b"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/telemetry",
+      "status_code": 200,
+      "elapsed_ms": 2.968,
+      "response_bytes": 942,
+      "response_sha256": "4b724a9fc1b9c9bcfd0af1aa9dc069ea6022091f036e764e7ba508be38c9b22c"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/alerts",
+      "status_code": 200,
+      "elapsed_ms": 2.598,
+      "response_bytes": 710,
+      "response_sha256": "880d4c70ba42b7577ad60ebe9ec3a2dfbd5d063affcf5be5373816646cbcad7c"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/alerts/41b5f5ea941049ccaca15699b25a815f/actions",
+      "status_code": 200,
+      "elapsed_ms": 2.855,
+      "response_bytes": 814,
+      "response_sha256": "4bb3e7d7c4059d0a9ae97fba3a4aa2d1ec2a3412205717ac073673565ea5fe67"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/alerts/41b5f5ea941049ccaca15699b25a815f/actions",
+      "status_code": 200,
+      "elapsed_ms": 2.407,
+      "response_bytes": 953,
+      "response_sha256": "ea7d97ae2da36a5cf757d65f1449055b0e36e5dbf315c9c0118c0ff9f1558d47"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/telemetry/export",
+      "status_code": 200,
+      "elapsed_ms": 4.319,
+      "response_bytes": 414,
+      "response_sha256": "6e6bdaa3428c0b2386448c7c07158a70e9a313bb2f3ef92b9a561c2cba668247"
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/audit/export",
+      "status_code": 200,
+      "elapsed_ms": 3.991,
+      "response_bytes": 28627,
+      "response_sha256": "93a1aa6f2f98c2ec976dc10d498f958c7802327a1d8e0bd74591755ed6f8a712"
+    },
+    {
+      "method": "GET",
+      "path": "/api/audit/verify",
+      "status_code": 200,
+      "elapsed_ms": 3.018,
+      "response_bytes": 171,
+      "response_sha256": "5c298e16ca56f6becf41876b729488ac44d41fe79911903adbad1bc32f6707d1"
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/65e7d49dcdcf4f7b8c0a1384a74eb5ee/packages",
+      "status_code": 201,
+      "elapsed_ms": 19.973,
+      "response_bytes": 663,
+      "response_sha256": "f65f12f6e4c479400378c04ffd4a969d512d8d4cdc8f17d165f96f927a69dbbc"
+    },
+    {
+      "method": "GET",
+      "path": "/api/packages/7ea29beffdf1466683df1df6285e8fad/manifest",
+      "status_code": 200,
+      "elapsed_ms": 3.43,
+      "response_bytes": 500,
+      "response_sha256": "a7989795c4ab82f349bbdf6f2c6b3b3bc9377d2b44a4b2e020eb7292e5415e44"
+    },
+    {
+      "method": "GET",
+      "path": "/api/packages/7ea29beffdf1466683df1df6285e8fad/download",
+      "status_code": 200,
+      "elapsed_ms": 1.827,
+      "response_bytes": 353,
+      "response_sha256": "2c9d6a01576a9f53caabf10c57519ef9612efaa7b252b1de77d5488f940cde80"
+    },
+    {
+      "method": "GET",
+      "path": "/api/packages/7ea29beffdf1466683df1df6285e8fad/requirements",
+      "status_code": 200,
+      "elapsed_ms": 1.734,
+      "response_bytes": 63,
+      "response_sha256": "c7d7bb0abf0e6b4e8d9835e7e2ee54da068f526acc70ee7365fa269be8a92e25"
+    },
+    {
+      "method": "POST",
+      "path": "/api/operations/backup",
+      "status_code": 200,
+      "elapsed_ms": 17.006,
+      "response_bytes": 111218,
+      "response_sha256": "2edcd34d706234dfb3c65cef4282981f26ff1cc1ab852e9fd2b5aab5addd4e70"
+    }
+  ],
+  "not_run": [],
+  "artifacts": {
+    "training_dataset_id": "53cdb0f01fd64616879e3ed2c9e5c7da",
+    "metadata_dataset_id": "42da46e0a9a449d48b52854c1b89d9e2",
+    "annotation_task_id": "f4319fe6ae624fab84665905995dadbe",
+    "labelled_dataset_id": "25ba0f19b99e457daf841ec5b79190db",
+    "document_id": "c2bbeeef03424b1fbc2ad262b5119a95",
+    "document_version_id": "a480c33385e44a8cb3bd7b93004f7e0f",
+    "model_id": "c58b7653fff94e278f075b5dd7fd880d",
+    "imported_model_id": "d688a53df54e47b98ca991a3e8473f04",
+    "baseline_id": "3951d5e3299144a28a6b03d5396424ca",
+    "evaluation_id": "925ca71b37694dfbb712cfb6d8a9fbed",
+    "comparison_id": "d88a6cc48a8742c29714cce9dc13ee45",
+    "deployment_id": "41421fe90c954e8d8ff3e592a4779ad6",
+    "evaluation_report_sha256": "cd5d6fe2ec6a4afa6fdeaa26d658c9603438c223b13fd6046d7c54ebdaf1f710",
+    "workflow_id": "a730c7b9ccaa4a64b9af5ee4bf9844ce",
+    "workflow_job_id": "5b6c330bf1ef478daee84b1b22735d82",
+    "workflow_dataset_id": "7fdfe299ded54908966119caabb18809",
+    "skill_id": "51f5da665248417d8473d0e7d13fa294",
+    "skill_run_id": "3df022436b3c434ba3146527c43601b4",
+    "telemetry_id": "9ab549aa02cf41bea36551ab7164123e",
+    "alert_id": "41b5f5ea941049ccaca15699b25a815f",
+    "audit_csv_sha256": "93a1aa6f2f98c2ec976dc10d498f958c7802327a1d8e0bd74591755ed6f8a712",
+    "telemetry_csv_sha256": "6e6bdaa3428c0b2386448c7c07158a70e9a313bb2f3ef92b9a561c2cba668247",
+    "dependency_package_id": "7ea29beffdf1466683df1df6285e8fad",
+    "backup": {
+      "sha256": "2edcd34d706234dfb3c65cef4282981f26ff1cc1ab852e9fd2b5aab5addd4e70",
+      "size_bytes": 111218,
+      "record_count": 42,
+      "object_count": 17,
+      "audit": {
+        "checked": 89,
+        "head_hash": "4340c25c81229878e201b9ac012a665c150ed6aa7ac2d6a4a9f1ed63ae0624b2",
+        "valid": true
+      }
+    }
+  },
+  "scope": "CPU-capable local feature chain; no mocked application responses or external-service success claims",
+  "version": "0.2.0",
+  "project_id": "65e7d49dcdcf4f7b8c0a1384a74eb5ee",
+  "coverage_complete": true,
+  "not_exercised": [
+    "External chat/embedding services and semantic model quality",
+    "Docker lifecycle or third-party MCP service availability",
+    "Browser rendering, GPU execution, OCR and hardware acceptance",
+    "Configured database extraction (covered by separate source tests)"
+  ],
+  "duration_seconds": 0.926,
+  "completed_at": "2026-09-12T08:06:19.968955+00:00"
+}

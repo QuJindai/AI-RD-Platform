@@ -128,7 +128,8 @@ class Store:
             old = self._record(row)
             if expected_revision is not None and old['revision'] != expected_revision:
                 raise ValueError('revision conflict; reload and retry')
-            if old['kind'] in ('dataset', 'model', 'document', 'workflow'):
+            if old['kind'] in ('dataset', 'model', 'document', 'workflow', 'skill', 'integration_package',
+                               'model_baseline', 'model_evaluation', 'model_comparison', 'source_snapshot'):
                 raise ValueError('immutable version; create a new version')
             data = json.loads(row['data'])
             if any(k in changes for k in ('id', 'kind', 'project_id', 'revision', 'created_at', 'updated_at')):
