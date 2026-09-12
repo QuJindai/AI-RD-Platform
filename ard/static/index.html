@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="AI-RD-Platform 人工智能研发管理控制台">
   <title>AI-RD Platform · 研发控制台</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
   <a class="skip-link" href="#workspace">跳到主要内容</a>
@@ -129,15 +129,15 @@
   <dialog id="project-dialog"><form id="project-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">NEW PROJECT</p><h2>创建研发项目</h2></div><button id="project-dialog-close" class="icon-button" type="button" aria-label="关闭">×</button></div><label class="field">项目名称<input id="project-name" required maxlength="100" placeholder="例如：设备预测性维护"></label><label class="field">项目说明<textarea id="project-description" rows="3" maxlength="2000"></textarea></label><div class="form-grid"><label class="field">存储配额（MiB）<input id="project-quota" type="number" min="1" max="10240" value="100"></label><label class="field">活动任务上限<input id="project-jobs" type="number" min="1" max="20" value="4"></label></div><div class="dialog-actions"><button id="project-dialog-cancel" class="button ghost" type="button">取消</button><button id="project-create" class="button primary" type="submit" value="default">创建项目</button></div></form></dialog>
   <dialog id="auth-dialog"><form id="auth-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">ACCESS</p><h2>访问凭据</h2></div><button id="auth-dialog-close" class="icon-button" type="button" aria-label="关闭">×</button></div><p class="dialog-copy">本机模式无需令牌。远程服务返回未授权时，请输入管理员提供的 Bearer Token；令牌仅保存在当前浏览器会话。</p><label class="field">Bearer Token<input id="auth-token" type="password" autocomplete="off" placeholder="仅在服务要求时填写"></label><div class="dialog-actions"><button id="auth-clear" class="button ghost" type="button">清除令牌</button><button class="button primary" type="submit" value="default">保存并重连</button></div></form></dialog>
   <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
-  <script src="/static/app.js" defer></script>
-  <script src="/static/features.js" defer></script>
-  <script src="/static/data-tools.js" defer></script>
-  <script src="/static/source-tools.js" defer></script>
-  <script src="/static/knowledge-tools.js" defer></script>
-  <script src="/static/model-tools.js" defer></script>
-  <script src="/static/workflow-tools.js" defer></script>
-  <script src="/static/skill-tools.js" defer></script>
-  <script src="/static/operation-tools.js" defer></script>
-  <script src="/static/integration-tools.js" defer></script>
+  <script src="static/app.js" defer></script>
+  <script src="static/features.js" defer></script>
+  <script src="static/data-tools.js" defer></script>
+  <script src="static/source-tools.js" defer></script>
+  <script src="static/knowledge-tools.js" defer></script>
+  <script src="static/model-tools.js" defer></script>
+  <script src="static/workflow-tools.js" defer></script>
+  <script src="static/skill-tools.js" defer></script>
+  <script src="static/operation-tools.js" defer></script>
+  <script src="static/integration-tools.js" defer></script>
 </body>
 </html>

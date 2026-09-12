@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "version": "0.2.1",
+  "checks": [
+    {
+      "name": "HTTP health",
+      "status": "PASS"
+    },
+    {
+      "name": "CSV upload",
+      "status": "PASS"
+    },
+    {
+      "name": "Immutable clean version",
+      "status": "PASS"
+    },
+    {
+      "name": "Export SHA-256",
+      "status": "PASS"
+    },
+    {
+      "name": "Split and merge",
+      "status": "PASS"
+    },
+    {
+      "name": "Transfer approval",
+      "status": "PASS"
+    },
+    {
+      "name": "Real CPU training",
+      "status": "PASS"
+    },
+    {
+      "name": "Held-out evaluation",
+      "status": "PASS"
+    },
+    {
+      "name": "Deployed predictions",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge source retrieval",
+      "status": "PASS"
+    },
+    {
+      "name": "Human checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow resume",
+      "status": "PASS"
+    },
+    {
+      "name": "Audit chain",
+      "status": "PASS"
+    }
+  ],
+  "project_id": "b873571f6a984f53b4e1644c41de1ca8",
+  "duration_seconds": 0.462,
+  "data_classification": "synthetic only",
+  "transport": "real HTTP"
+}

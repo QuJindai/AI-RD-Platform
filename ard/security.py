@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 import hmac
 import ipaddress
+from urllib.parse import urlsplit
 
 from fastapi import HTTPException
 
@@ -29,8 +30,24 @@ class Identity:
 
 
 class Security:
-    def __init__(self, identities):
+    def __init__(self, identities, public_origin=None):
         self.identities = identities or {}
+        self.public_origin = None
+        self.public_host = None
+        if public_origin:
+            parts = urlsplit(public_origin)
+            if (parts.scheme not in ('https', 'http') or not parts.hostname or parts.username or parts.password
+                    or parts.path not in ('', '/') or parts.query or parts.fragment
+                    or any(c.isspace() or c in '*\\' for c in public_origin)):
+                raise ValueError('ARD_PUBLIC_ORIGIN必须是精确的HTTP(S)来源，不含账号、路径、参数或通配符')
+            port = parts.port
+            host = parts.hostname.lower()
+            self.public_host = '[' + host + ']' if ':' in host else host
+            default_port = 443 if parts.scheme == 'https' else 80
+            authority = self.public_host + (':' + str(port) if port and port != default_port else '')
+            self.public_origin = parts.scheme + '://' + authority
+            if not self.identities:
+                raise ValueError('配置公开来源时必须提供身份令牌')
         for token, config in self.identities.items():
             if len(token) < 16 or config.get('role') not in ('admin', 'developer', 'reviewer', 'auditor'):
                 raise ValueError('身份令牌至少16字符，且必须配置有效角色')
@@ -39,7 +56,7 @@ class Security:
 
     def resolve(self, request):
         origin = request.headers.get('origin')
-        if origin and origin.rstrip('/') != str(request.base_url).rstrip('/'):
+        if origin and origin.rstrip('/') not in (str(request.base_url).rstrip('/'), self.public_origin):
             raise HTTPException(403, '跨来源请求被拒绝')
         if not self.identities:
             host = request.client.host if request.client else ''

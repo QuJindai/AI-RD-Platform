@@ -129,8 +129,9 @@ class BodyLimit:
 def create_app(data_dir=None, identities=None):
     if identities is None:
         identities = json.loads(os.environ.get('ARD_IDENTITIES', '{}'))
-    security = Security(identities)
+    security = Security(identities, os.environ.get('ARD_PUBLIC_ORIGIN'))
     root = data_dir or os.environ.get('ARD_DATA_DIR', 'runtime')
+    instance_id = os.environ.get('ARD_INSTANCE_ID')
 
     @asynccontextmanager
     async def lifespan(app):
@@ -141,6 +142,8 @@ def create_app(data_dir=None, identities=None):
     app = FastAPI(title='AI-RD-Platform', version=__version__, lifespan=lifespan)
     app.state.security = security
     allowed = ['localhost', '127.0.0.1', '[::1]', 'testserver']
+    if security.public_host:
+        allowed.append(security.public_host)
     allowed += [x.strip() for x in os.environ.get('ARD_ALLOWED_HOSTS', '').split(',') if x.strip()]
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=allowed)
     app.add_middleware(BodyLimit)
@@ -171,6 +174,12 @@ def create_app(data_dir=None, identities=None):
     @app.get('/api/me')
     def me(user: User):
         return {'user': user.user, 'role': user.role, 'mode': 'local' if user.local else 'token', 'projects': user.projects}
+
+    @app.get('/api/runtime/identity')
+    def runtime_identity(user: User):
+        if user.local or user.role != 'admin' or '*' not in user.projects:
+            raise HTTPException(403, '需要已认证的全局管理员')
+        return {'service': 'AI-RD-Platform', 'pid': os.getpid(), 'instance_id': instance_id}
 
     @app.get('/api/projects')
     def projects(s: Svc, user: User):

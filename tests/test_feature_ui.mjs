@@ -55,19 +55,24 @@ after(async () => {
   rmSync(directory, {recursive: true, force: true});
 });
 
-async function runtime() {
+async function runtime(prefix = "") {
   const errors = [], requests = [];
   const virtualConsole = new VirtualConsole();
   virtualConsole.on("jsdomError", error => errors.push(error.message));
   const dom = new JSDOM(readFileSync(new URL("ard/static/index.html", root), "utf8"), {
-    url: base, runScripts: "outside-only", virtualConsole
+    url: base + prefix, runScripts: "outside-only", virtualConsole
   });
   // Let jsdom's initial lifecycle finish before explicitly invoking application init.
   await delay(0);
   Object.assign(dom.window, {Headers, FormData, Blob, Response, Request});
   dom.window.fetch = async (path, options) => {
     requests.push({path, options});
-    return fetch(new URL(path, base), options);
+    const url = new URL(path, dom.window.location.href);
+    if (prefix) {
+      assert.ok(url.pathname.startsWith(prefix), "API request escaped the Notebook proxy path: " + url.pathname);
+      url.pathname = "/" + url.pathname.slice(prefix.length);
+    }
+    return fetch(url, options);
   };
   dom.window.setInterval = () => 0;
   dom.window.URL.createObjectURL = blob => {
@@ -79,13 +84,30 @@ async function runtime() {
   dom.window.sessionStorage.setItem("ard_project", projects[0].id);
   const context = dom.getInternalVMContext();
   for (const script of dom.window.document.querySelectorAll("script[src]")) {
-    const path = script.getAttribute("src").replace("/static/", "ard/static/");
+    const path = script.getAttribute("src").replace(/^\/?static\//, "ard/static/");
     vm.runInContext(readFileSync(new URL(path, root), "utf8"), context, {filename: path});
   }
   await vm.runInContext("init()", context);
   return {dom, context, errors, requests, window: dom.window,
     el: id => dom.window.document.getElementById(id)};
 }
+
+test("Notebook proxy prefix preserves application assets and authenticated feature requests", async () => {
+  const prefix = "/user/synthetic/proxy/8000/";
+  const ui = await runtime(prefix);
+  try {
+    for (const element of ui.window.document.querySelectorAll("script[src], link[rel=stylesheet]")) {
+      const url = new URL(element.src || element.href);
+      assert.ok(url.pathname.startsWith(prefix + "static/"), "asset escaped proxy: " + url.pathname);
+      const response = await fetch(base + url.pathname.slice(prefix.length - 1));
+      assert.equal(response.status, 200);
+    }
+    assert.equal(ui.window.ARD.data().projectId, projects[0].id);
+    assert.ok(ui.requests.length > 8);
+    assert.equal(ui.el("global-status").hidden, true);
+    assert.deepEqual(ui.errors, []);
+  } finally { ui.dom.window.close(); }
+});
 
 test("all feature panels mount and refresh against the actual HTTP API", async () => {
   const ui = await runtime();

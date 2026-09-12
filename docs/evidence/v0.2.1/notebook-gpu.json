@@ -1,0 +1,10 @@
+{
+  "status": "UNVERIFIED",
+  "hardware": [],
+  "workload": "CUDA FP32 matrix multiplication",
+  "application_training_backend": "CPU scikit-learn",
+  "cuda_test": {
+    "status": "UNVERIFIED",
+    "reason": "PYTORCH_UNAVAILABLE"
+  }
+}

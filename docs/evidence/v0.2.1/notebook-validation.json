@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "scope": "Released notebook execution and recovery on local Linux",
+  "notebook_sha256": "0229e39fbab2366eac716e827cba7a92e9ea03b6aa1b0d741cbc44e556fda975",
+  "payload_sha256": "49417638c4befdc834030eb798be2484be9efb97ea23f8c6d90874a05f94255f",
+  "wheel_sha256": "aae20cd928391c297c6f741bdcca09a3b0067aee89744d7be3098ad68fbd3d6f",
+  "payload_matches_current_source": true,
+  "fresh_install": true,
+  "repeat_reused_server": true,
+  "identity_mismatch_rejected": true,
+  "stopped_process_exited": true,
+  "restart_preserved_projects": 2,
+  "credentials_preserved": true,
+  "exported_manifests_valid": true,
+  "credentials_excluded_from_reports": true,
+  "http_acceptance_each_run": {
+    "baseline": 13,
+    "functional": 61
+  },
+  "runs": 3,
+  "gpu_result": {
+    "status": "UNVERIFIED",
+    "hardware": [],
+    "workload": "CUDA FP32 matrix multiplication",
+    "application_training_backend": "CPU scikit-learn",
+    "cuda_test": {
+      "status": "UNVERIFIED",
+      "reason": "PYTORCH_UNAVAILABLE"
+    }
+  },
+  "modelscope_execution": "NOT_RUN",
+  "browser_rendering": "NOT_RUN"
+}

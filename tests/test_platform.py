@@ -43,7 +43,7 @@ def approve(c, asset):
 
 
 def test_health_empty_state_and_project(client):
-    assert client.get('/health').json()['version'] == '0.2.0'
+    assert client.get('/health').json()['version'] == '0.2.1'
     p = project(client)
     assert client.get('/api/projects').json()[0]['id'] == p['id']
     assert client.get('/api/overview').json()['counts']['datasets'] == 0

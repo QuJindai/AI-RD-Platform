@@ -28,6 +28,10 @@ jobs:
           git diff --exit-code -- docs/gui/gui-preview.html
       - run: python -m pip wheel --no-deps --wheel-dir dist .
       - run: python scripts/verify_wheel.py dist/*.whl --output test-results/package-verification.json
+      - name: Verify the released Notebook and recovery
+        run: |
+          python -m pip install ipython==9.5.0
+          python scripts/verify_notebook.py --notebook deploy/AI_RD_ModelScope.ipynb --output test-results/notebook-validation.json
       - run: python -m pip install --no-deps dist/*.whl
       - name: Installed package real HTTP acceptance
         shell: bash
@@ -63,4 +67,5 @@ jobs:
             test-results/http-smoke.json
             test-results/functional-smoke.json
             test-results/package-verification.json
+            test-results/notebook-*.json
             test-results/server.log

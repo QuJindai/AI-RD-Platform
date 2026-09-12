@@ -1,6 +1,7 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
+const appBasePath = new URL('.', document.baseURI || 'http://localhost/').pathname;
 const state = {
   token: sessionStorage.getItem("ard_token") || "",
   me: null, projects: [], projectId: sessionStorage.getItem("ard_project") || "",
@@ -54,7 +55,7 @@ async function api(path, options = {}, context = captureIdentity()) {
   if (options.body && !(options.body instanceof FormData) && !headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
   }
-  const response = await fetch(path, { ...fetchOptions, headers });
+  const response = await fetch(appBasePath + path.replace(/^\/+/, ''), { ...fetchOptions, headers });
   requireCurrent(context);
   if (!response.ok) {
     let message = `请求失败（${response.status}）`;

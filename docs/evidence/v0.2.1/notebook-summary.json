@@ -1,0 +1,38 @@
+{
+  "format": "ai-rd-notebook-acceptance",
+  "status": "PARTIAL",
+  "wheel_sha256": "aae20cd928391c297c6f741bdcca09a3b0067aee89744d7be3098ad68fbd3d6f",
+  "port": 60711,
+  "environment": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "bootstrap_python": "3.12.14"
+  },
+  "not_verified": [
+    "External browser rendering and platform port routing",
+    "GPU model training/inference, Docker and external LLM services"
+  ],
+  "tests": {
+    "smoke": {
+      "status": "PASS",
+      "checks": 13,
+      "duration_seconds": 0.462
+    },
+    "functional": {
+      "status": "PASS",
+      "checks": 61,
+      "duration_seconds": 0.885
+    }
+  },
+  "gpu": {
+    "status": "UNVERIFIED",
+    "hardware": [],
+    "workload": "CUDA FP32 matrix multiplication",
+    "application_training_backend": "CPU scikit-learn",
+    "cuda_test": {
+      "status": "UNVERIFIED",
+      "reason": "PYTORCH_UNAVAILABLE"
+    }
+  },
+  "application_status": "PASS",
+  "anonymous_api_status": "PASS"
+}
