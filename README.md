@@ -4,6 +4,8 @@
 
 **版本：0.2.1，Notebook 部署版。** 五模块 GUI 已接入持久化后端。具体实现、可选外部适配和后续验收条件见[需求覆盖表](docs/coverage.md)与[功能验收记录](docs/verification-v0.2.md)。
 
+**Codex 接手入口：** [完整代码交接说明](CODEX_HANDOFF.md)，包含代码地图、版本与测试证据、魔搭部署实际停点、未完成事项和可直接续接的执行指令（2026-09-15）。
+
 魔搭等 Linux Notebook 可上传并运行 [自包含部署 Notebook](deploy/AI_RD_ModelScope.ipynb)，内置程序 wheel、锁文件和验收脚本。详见[部署说明与验证边界](docs/notebook-deployment.md)。这不代表已经在某个魔搭账号完成 GPU 部署；实际结果由运行后的验收包记录。
 
 正式控制台含总览、数据工坊、模型实验、智能体与工作流、运维与资源，以及项目和凭据弹窗。早期 [GUI 1.0 设计规范](docs/gui/design-spec.md)和[独立交互预览](docs/gui/gui-preview.html)保留为合成演示；运行平台即可使用新增功能。真实浏览器和目标设备的视觉验收仍待完成。
